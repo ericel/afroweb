@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -14,6 +14,8 @@ import { SearchComponent } from './search/search.component';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from './../../shared/shared.module';
+import { SitemapComponent } from './sitemap/sitemap.component';
+import { SomeDirective } from './some.directive';
 
 const routes: Routes = [
     { path: '', component: HomeComponent,
@@ -28,7 +30,15 @@ const routes: Routes = [
  {
    path: 'search/:string',
    component:  SearchComponent
-  }
+  },
+  { path: 'sitemap', component: SitemapComponent,
+    data: {
+       meta: {
+        title: 'Africa #1 Website sitemap',
+        description: 'Sitemap'
+       }
+    }
+ }
 ];
 
 @NgModule({
@@ -50,7 +60,10 @@ const routes: Routes = [
   ],
   declarations: [
     HomeComponent,
-    SearchComponent
-    ]
+    SearchComponent,
+    SitemapComponent,
+    SomeDirective
+    ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class HomeModule { }

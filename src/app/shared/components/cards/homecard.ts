@@ -55,6 +55,7 @@ import { Subscription } from 'rxjs';
         <h1>{{status.status}}</h1>
        </md-card-content>
         <md-card-actions>
+        <div class="divider"></div>
         <div class="pull-left">
                      <button md-button  (click)="onClickPlay($event)">
                         <i *ngIf="!playing" class="fa fa-play-circle-o fa-2x" aria-hidden="true"></i>
@@ -62,9 +63,10 @@ import { Subscription } from 'rxjs';
                    </button>           
           </div> 
         <div  class="pull-right">
-        <button md-button routerLink="/music/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-external-link" aria-hidden="true"></i></span><span class="no-sm-no">music</span></button>
+        <button md-button routerLink="/music/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-external-link fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">music</span></button>
+        <button md-button (click)="openDialog()"><i class="fa fa-share-alt-square fa-2x" aria-hidden="true"></i></button>
       
-        <button md-button data-toggle="collapse" [attr.data-target]="'#' + status.sid" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-commenting fa-1x" aria-hidden="true"></i></button>
+        <button md-button data-toggle="collapse" [attr.data-target]="'#' + status.sid" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-commenting fa-2x" aria-hidden="true"></i></button>
         </div>
         <div class="clearfix"></div>                
                       <div *ngIf="playing" class="animations-player">
@@ -80,20 +82,23 @@ import { Subscription } from 'rxjs';
      <div  *ngIf='status.type !== "Audio"'>
       <md-card-content>
           <div [outerHTML]="status.status | linky"></div>
+     
       </md-card-content>
+      
        <md-card-actions class="container-fluid">
+        <div class="divider"></div>  
        <div class="pull-left">
-        <button md-button color="primary" (click)="showLove()"><i class="fa fa fa-heart fa-1x" aria-hidden="true"></i></button> {{status.rating}} 
-        <button md-button (click)="openDialog()"><i class="fa fa-share-alt-square fa-1x" aria-hidden="true"></i></button>
+        <button md-button color="primary" (click)="showLove()"><i class="fa fa fa-heart fa-2x" aria-hidden="true"></i></button> {{status.rating}} 
+        <button md-button (click)="openDialog()"><i class="fa fa-share-alt-square fa-2x" aria-hidden="true"></i></button>
         </div>
         <div  class="pull-right">
         <button md-button *ngIf="status.type === 'Question'" routerLink="/content/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye" aria-hidden="true"></i></span><span class="no-sm-no">Help Answer</span></button>
-        <button md-button *ngIf="status.type === 'Status Update'" routerLink="/content/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye" aria-hidden="true"></i></span><span class="no-sm-no">More of this</span></button>
+        <button md-button *ngIf="status.type === 'Status Update'" routerLink="/content/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">More of this</span></button>
         
-        <button md-button *ngIf='status.type !== "Status Update" && status.type !== "Question"' routerLink="/content/_blog/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye" aria-hidden="true"></i></span><span class="no-sm-no">Read More</span></button>
+        <button md-button *ngIf='status.type !== "Status Update" && status.type !== "Question"' routerLink="/content/_blog/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">Read More</span></button>
 
       
-        <button md-button data-toggle="collapse" [attr.data-target]="'#' + status.sid" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-commenting fa-1x" aria-hidden="true"></i></button>
+        <button md-button data-toggle="collapse" [attr.data-target]="'#' + status.sid" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-commenting fa-2x" aria-hidden="true"></i></button>
         </div>
         <div class="clearfix"></div>
       </md-card-actions>

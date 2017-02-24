@@ -18,9 +18,9 @@
         </div>
         </div>
  </div>
-<main class="main" *ngIf="searchHasResults">
+<main class="main" >
 
-  <div class="container-fluid">
+  <div class="container-fluid" *ngIf="searchHasResults">
     <div class="row gutter-10">
         <div class="col-md-3">
         <app-adscreate class="no-sm-no"></app-adscreate>
@@ -78,8 +78,7 @@
 
   </div>
    
-</main>
-<main class="main">
+
  <div *ngIf="!searchHasResults">
        <div class="alert alert-warning"> No search results found! Change your search Criteria</div>
     </div>

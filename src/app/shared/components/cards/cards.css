@@ -1,6 +1,14 @@
 /*Home Statuses */
-
-
+.mat-card-actions{
+    margin-bottom: 0px !important;
+}
+.mat-card {
+    padding: 16px 16px !important;
+}
+.divider {
+	border-top: 1px solid #e6e4e4 !important;
+    padding-bottom: 10px;
+}
   md-card-header {
     margin-bottom: 15px !important;
   }
@@ -20,6 +28,7 @@
   }
   md-card {
     overflow: hidden !important;
+	border-top: 2px solid #006064 !important;
   }
   md-card.status {
     padding: 20px 0 0px 0!important;
@@ -130,13 +139,9 @@ md-card-header {
     line-height: 0px !important;
     padding: 2px !important;
     border-radius: 100%;
-    color: #0097a7 !important;
     z-index: 990;
 }
-.music-01 [md-button]:hover, .music-010  [md-button]:hover{
-    background: #0097a7 !important;
-    color: #fff !important;
-}
+
 .music-01 md-card-content, .music-01 md-card-subtitle, .music-01 md-card-title{
     margin-bottom: 5px !important;
 }
@@ -810,4 +815,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a0fff0', end
 }
 @media (max-width: 400px) {
 	h1 { font-size: 1.5em; }
+}
+
+.fa {
+	color: rgba(58, 58, 58, 0.84) !important;
 }
