@@ -172,6 +172,7 @@ span{
       border-radius: 0 !important;
       box-shadow: 0 1px 1px -2px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px 0 rgba(0,0,0,.12) !important;
           padding: 20px !important;
+      border-bottom: 2px solid #006064 !important;
   }
   @media screen and (min-width: 769px){
    md-card {

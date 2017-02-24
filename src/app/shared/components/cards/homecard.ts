@@ -51,6 +51,7 @@ import { Subscription } from 'rxjs';
                     <audio vgMedia id="myAudio" preload="auto">
                         <source *ngFor="let audio of sources" [src]="audio.src" [type]="audio.tags">
                     </audio>
+                     <button md-button color="primary" (click)="showLove()"><i class="fa fa fa-heart fa-2x" aria-hidden="true"></i></button> {{status.rating}}
              </vg-player>  
         <h1>{{status.status}}</h1>
        </md-card-content>

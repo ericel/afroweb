@@ -28,7 +28,9 @@ import { AuthService } from '../../services/auth/auth.service';
    
   `,
   styles: [`
-
+md-card {
+      border-bottom: 2px solid #006064 !important;
+}
   .card-links i{
     margin-right: 5px;
   }
