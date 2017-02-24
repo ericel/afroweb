@@ -529,11 +529,10 @@ img.blg-image {
   }
  .mat-tooltip {
     height: auto;
-    min-width: 150px !important;
-    min-height: 150px !important;
-    padding: 8px !important;
+    padding: 18px !important;
     white-space: initial;
     font-size: 1.5em !important;
+    color: #006064 !important;
   }
 @media screen and (min-width: 600px) {
   .mat-tooltip .mat-content {

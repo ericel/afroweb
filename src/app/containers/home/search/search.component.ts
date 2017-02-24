@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { StatusService } from '../../../shared/services/status/status.service';
 @Component({
@@ -6,7 +6,7 @@ import { StatusService } from '../../../shared/services/status/status.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, AfterViewInit {
 search_term;searches;searchedObj;
 statusesOk: boolean = false;
 searchHasResults: boolean = false;
@@ -18,17 +18,17 @@ searchHasResults: boolean = false;
   ngOnInit() {
      this.route.params.subscribe(params => {
          this.search_term = params['string'];
-         
-        const searchedObj = this.findByName(this.search_term);
-        if(searchedObj.length > 0){
-          this.searchHasResults = true;
-          this.searchedObj = searchedObj;
-        }
-
+  
          this._statusService.getStatus()
           .subscribe(searches => { this.searches = searches; 
             if(this.searches){
               this.statusesOk = true; 
+
+              const searchedObj = this.findByName(this.search_term);
+              if(searchedObj.length > 0){
+                this.searchHasResults = true;
+                this.searchedObj = searchedObj;
+              }
          } 
       });
      
@@ -52,5 +52,10 @@ searchHasResults: boolean = false;
         }
       }
       return thisObject
+   }
+
+   ngAfterViewInit() {
+   
+      
    }
 }

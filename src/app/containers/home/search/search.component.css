@@ -5,5 +5,11 @@
 .ordered-0{
     background: #fff;
     border-radius: 4px;
-    padding:10px 20px;
+    padding:20px;
+}
+.ordered-0 .mat-checkbox-layout .mat-checkbox-label {
+    line-height: 28px !important;
+}
+.example-margin {
+  margin: 0 10px;
 }

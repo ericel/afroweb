@@ -18,45 +18,47 @@
         </div>
         </div>
  </div>
-<main class="main">
-  <div class="container-fluid shadow-2 ordered-0">
-    <div class="row">
-      <div class="col-md-4">
-        <h1 class="search_term">{{search_term}}</h1>
-      </div>
-      <div class="col-md-4">
-        <span>Audio</span>
+<main class="main" *ngIf="searchHasResults">
 
-      </div>
-      <div class="col-md-4">
-        <h1>{{search_term}}</h1>
-      </div>
-    </div>
-  </div>
-  <div class="container-fluid" *ngIf="searchHasResults">
-
-    
-      <div class="row gutter-0">
-        <div class="col-md-4">
-          <app-updatecard ></app-updatecard>
+  <div class="container-fluid">
+    <div class="row gutter-10">
+        <div class="col-md-3">
+        <app-adscreate class="no-sm-no"></app-adscreate>
+          <app-adsone ></app-adsone>
+          <app-adsmovies class="no-sm-no"></app-adsmovies>
         </div>
-        <div class="col-md-4 no-sm-no">
-       <app-usersOnlinecard [limit]="5"></app-usersOnlinecard>
-        </div>
-        <div class="col-md-4 no-sm-no">
-          <div class="padd-me"><app-authcard></app-authcard></div>
-        </div>
-      </div>
+        <div class="col-md-6">
+          <div class="container-fluid">
+            <div class="shadow-3 ordered-0">
+              <div class="row">
+                <div class="col-md-4">
+                <div class="tem-head">Search Term:</div>
+                  <h1 class="search_term">{{search_term}}</h1>
+                </div>
+                <div class="col-md-6">
+                  <div class="tem-head">Filter Results:</div>
+                  <md-checkbox class="example-margin" [(ngModel)]="checked">News</md-checkbox>
+                  <md-checkbox class="example-margin" [(ngModel)]="checked">Audio</md-checkbox>
+                  <md-checkbox class="example-margin" [(ngModel)]="checked">Updates</md-checkbox>
+                  <md-checkbox class="example-margin" [(ngModel)]="checked">Questions</md-checkbox>
+                </div>
+                <div class="col-md-2">
+                <div class="tem-head">Search Count:</div>
+                  <h1>{{searchedObj.length}}</h1>
+                </div>
+              </div>
+              </div>
+            </div>
       <!--<div class="ms-home"
         
          infinite-scroll
          [infiniteScrollDistance]="scrollDistance"
          [infiniteScrollThrottle]="throttle"
          (scrolled)="onScrollDown()">-->
-      <div class="ms-home">
+      <div class="ms-home container-fluid mar-15 ">
       <masonry [useImagesLoaded]="true">
      
-        <masonry-brick class="col-md-4" *ngFor="let status of searchedObj">
+        <masonry-brick class="col-md-6" *ngFor="let status of searchedObj">
         <app-homecard
         [status]="status"
         (checked)="onStatusChecked($event)"
@@ -68,9 +70,17 @@
       </masonry>
        
     </div>
-  
+        </div>
+      <div class="col-md-3">
+             <app-adslist ></app-adslist>
+        </div>
+   </div>
+
   </div>
-    <div *ngIf="!searchHasResults">
-       <div class="alert alert-error"> No search results found! Change your search Criteria</div>
+   
+</main>
+<main class="main">
+ <div *ngIf="!searchHasResults">
+       <div class="alert alert-warning"> No search results found! Change your search Criteria</div>
     </div>
 </main>

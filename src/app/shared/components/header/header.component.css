@@ -314,6 +314,12 @@ input:-moz-placeholder {
 .logo {
   cursor: pointer;
 }
+.search-error {
+  position:absolute;
+  top: 0px;
+  right:0px;
+  z-index:9999 !important;
+}
 @media screen and (max-width: 769px){
 .logo img {
  
@@ -333,7 +339,13 @@ input:-moz-placeholder {
 .flexsearch--input {
   border-radius: 0px !important;
 }
+
+.search-error {
+  top: -50px;
+  right:0px;
 }
+}
+
 @media screen and (min-width: 769px){
 
   .search-sm {
@@ -343,12 +355,8 @@ input:-moz-placeholder {
   .logo {
   margin-left: 10px;
 }
+
 }
-.search-error {
-  position:absolute;
-  top: 0px;
-  right:0px;
-  z-index:9991;
-}
+
 
 
