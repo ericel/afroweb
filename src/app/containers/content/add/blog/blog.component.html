@@ -16,7 +16,7 @@
        <div  class="form-group" [ngClass]="{'has-error':!blogForm.controls['blogTitle'].valid && blogForm.controls['blogTitle'].touched}">
         <h1 class="mar-10">A Good Titile Will Make a Difference</h1>
        <md-input-container>
-        <input md-input   
+        <input mdInput  
               placeholder="Blog Title (150 max)"
               maxlength="150"
               #characterCountHint [formControl]="blogForm.controls['blogTitle']">
@@ -57,8 +57,8 @@
             <div class="form-group" [ngClass]="{'has-error':!blogForm.controls['blogDesc'].valid && blogForm.controls['blogDesc'].touched}">
               <div class="mar-10">Don't let us decide what should appear as your page description!</div>
               <md-input-container >
-              <textarea md-input class="desc"
-                    md-input placeholder="Draft of what you will write"
+              <textarea mdInput class="desc"
+                    placeholder="Draft of what you will write"
                     #characterCountHintText [formControl]="blogForm.controls['blogDesc']"></textarea>
               <md-hint align="end">{{characterCountHintText.value.length}} / 500</md-hint>
               </md-input-container>

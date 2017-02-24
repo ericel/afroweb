@@ -88,6 +88,7 @@ api: VgAPI;
  onPlayerReady(api:VgAPI) {
         this.api = api;
         this.api = api;
+        
 		 this.api.getDefaultMedia().subscriptions.ended.subscribe(
 				() => {
 				  this.playing = false;
@@ -96,6 +97,7 @@ api: VgAPI;
 
   }
   ngOnInit() {
+    
      this._authService._isUsers()
     .subscribe(value => { 
      this.users = value;

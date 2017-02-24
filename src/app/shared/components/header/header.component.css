@@ -344,5 +344,11 @@ input:-moz-placeholder {
   margin-left: 10px;
 }
 }
+.search-error {
+  position:absolute;
+  top: 0px;
+  right:0px;
+  z-index:9991;
+}
 
 

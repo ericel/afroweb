@@ -20,7 +20,9 @@ const routes: Routes = [
   component: NotfoundComponent,
   data: {
       title: 'Page Not FOund'
-    } }
+    } 
+  }
+  
   
 ];
 @NgModule({

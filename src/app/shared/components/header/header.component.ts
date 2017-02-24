@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
+import { FormGroup, FormBuilder, Validators, NgModel } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 @Component({
@@ -16,12 +17,14 @@ isAuthorized: boolean = false;
   searchThis;
   route: string;
   cat: string;
-user; 
+  user;
+  searchForm : FormGroup;
   constructor(
     private _elementRef: ElementRef,
     private _authService: AuthService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private fb: FormBuilder
   ) {
      this.router.events.subscribe(event => {
        //console.log(location.path());
@@ -40,6 +43,10 @@ user;
    }
 
   ngOnInit() {
+     this.searchForm = this.fb.group({
+      'search_term': [null,  Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])]
+    });
+
     this._authService.userAuth
     .subscribe(value => { 
     if(value){this.isAuthorized = true; this.user = value} 
@@ -60,5 +67,9 @@ focusChange(){
 
   logout(){
     this._authService.logout();
+  }
+
+  search(search){
+     this.router.navigate([`/search/${search.search_term}`]);
   }
 }

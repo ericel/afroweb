@@ -74,7 +74,7 @@ export class ShareCard implements OnInit {
     </div>
     <div class="col-4" style="text-align:center;">
         <a class="btn btn-social btn-google"
-        href="https://plus.google.com/share?url=https://www.idonsuffer.com/{{statusUrl}}">
+        href="https://plus.google.com/share?url=https://www.idonsuffer.com/{{statusUrl}}&text={{statusDesc}}">
         <span class="fa fa-google-plus-square">
        </span> <span class="no-big">G+</span> <span class="no-sm-no">Share On Google</span>
         </a>
@@ -102,6 +102,8 @@ export class SocialCard implements OnInit {
        this.statusPhotoUrl = "https://www.idonsuffer.com/assets/img/_status.png";
      } else if (this.status.type == "Question"){
         this.statusPhotoUrl =  "https://www.idonsuffer.com/assets/img/_status_q.png";
+     } else if (this.status.type == "Audio"){
+        this.statusPhotoUrl =  "https://www.idonsuffer.com/assets/img/audio.png";
      } else {
        this.statusPhotoUrl =  this.status.photoUrl;
      }

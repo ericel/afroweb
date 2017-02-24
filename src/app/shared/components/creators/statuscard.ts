@@ -149,7 +149,7 @@ export class UpdateCard implements OnInit {
     </div>
      <div class="clearfix"></div>
   </form>
-  <div *ngIf="!isAuthorized" class="not-auth color-primary" routerLink="/signup">Click Here Log In to Post! It's easy and fast.</div>
+  <div *ngIf="!isAuthorized" class="not-auth color-primary" routerLink="/authentication">Click Here Log In to Post! It's easy and fast.</div>
   </md-card>
   </div>
 
@@ -254,7 +254,7 @@ export class StatusCard implements OnInit {
 
 @Component({
   template: `
-    <app-statuscard></app-statuscard>
+    <app-statuscard class="animated bounceInUp"></app-statuscard>
   `,
 })
 export class DialogStatus {

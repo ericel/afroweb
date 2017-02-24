@@ -10,6 +10,7 @@ import { MasonryModule } from 'angular2-masonry';
 
 
 import { HomeComponent } from './home/home.component';
+import { SearchComponent } from './search/search.component';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from './../../shared/shared.module';
@@ -23,7 +24,11 @@ const routes: Routes = [
         'og:image': 'https://enoeasy-94b34.firebaseapp.com/assets/img/logo_big.png'
        }
     }
- }
+ },
+ {
+   path: 'search/:string',
+   component:  SearchComponent
+  }
 ];
 
 @NgModule({
@@ -45,7 +50,7 @@ const routes: Routes = [
   ],
   declarations: [
     HomeComponent,
-    
+    SearchComponent
     ]
 })
 export class HomeModule { }

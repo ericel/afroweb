@@ -7,7 +7,7 @@ import {MomentModule} from 'angular2-moment';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TagInputModule } from 'ng2-tag-input'
+//import { TagInputModule } from 'ng2-tag-input'
 import { MasonryModule } from 'angular2-masonry';
 import { SHARED_COMPONENTS } from './../shared/components';
 import { LinkyModule } from 'angular2-linky';
@@ -28,7 +28,7 @@ import {VgBufferingModule} from 'videogular2/buffering';
     }),
     RouterModule,
     MomentModule,
-    TagInputModule,
+   // TagInputModule,
     MasonryModule,
     LinkyModule,
      VgCoreModule,
