@@ -77,6 +77,13 @@ getDrafts(id){
         return snapshot.val()[id];   
       }) 
   }
+  getWebPage(wid: string){
+    const pageweb = this.af.database.object(`/eWebcontent`, { preserveSnapshot: true });
+    return pageweb.map(snapshot => {
+        
+        return snapshot.val()[wid];   
+      }) 
+  }
 
 getPageBlg(id: string){
    return this.pageBlg.map(snapshot => {
@@ -159,7 +166,7 @@ publishBlog(blog, photoUrl) {
          blogTitle: blog.blogTitle,
          photoUrl: photoUrl
        }).then(resolve => {
-        this.updateStatus(blog.blogCat, blog.blogDesc, photoUrl);
+        this.updateStatus(blog.blogCat, blog.blogDesc, photoUrl, blog.blogCat);
         this._notify.successAttempt("Nicely Done! Blog was successfully published!")
       }, reject => {
         this._notify.errorAttempt("Ouch! something is wrong!")
@@ -194,7 +201,7 @@ updateEditBlogPhoto(url, id) {
    }); 
 }
 
-updateStatus(type, status, photoUrl){
+updateStatus(type, status, photoUrl, contenttag){
     const token = window.localStorage.getItem(this.CREATE_KEY);
     let path = this.af.database.object(`eStatus/${token}`);
     return path.set({
@@ -207,7 +214,8 @@ updateStatus(type, status, photoUrl){
          photoUrl: photoUrl,
          createdAt: firebase.database.ServerValue.TIMESTAMP,
          updatedAt: firebase.database.ServerValue.TIMESTAMP,
-         tags: "blog"
+         tags: "blog",
+         contenttag: contenttag
     });
 }
 
@@ -229,7 +237,7 @@ updateStatus(type, status, photoUrl){
          photoUrl: img,
          updatedAt: firebase.database.ServerValue.TIMESTAMP
        }).then(resolve => {
-        this.updateStatusEdit(blog.blogCat, blog.blogDesc, img, id);
+        this.updateStatusEdit(blog.blogCat, blog.blogDesc, img, id,  blog.blogCat);
         this._notify.successAttempt("Nicely Done! Blog was successfully Updated!")
       }, reject => {
         this._notify.errorAttempt("Ouch! something is wrong!")
@@ -239,7 +247,7 @@ updateStatus(type, status, photoUrl){
     });
  }
 
- updateStatusEdit(type, status, photoUrl, id){
+ updateStatusEdit(type, status, photoUrl, id, contenttag){
     let path = this.af.database.object(`eStatus/${id}`);
     return path.update({
          sid: id,
@@ -251,7 +259,8 @@ updateStatus(type, status, photoUrl){
          photoUrl: photoUrl,
          createdAt: firebase.database.ServerValue.TIMESTAMP,
          updatedAt: firebase.database.ServerValue.TIMESTAMP,
-         tags: "blog"
+         tags: "blog",
+         contenttag: contenttag
     });
 }
 
@@ -260,4 +269,32 @@ delDraft(id){
   path.remove();
   this._notify.successAttempt("Draft Deleted!")
 }
+
+
+ createWebContent(blog, wib, img){
+          let path = this.af.database.object(`eWebcontent/${wib}`);
+          let contenttag = "Webcontent";
+          path.set({
+              pid: wib,
+              blogCat: blog.blogCat,
+              blogDesc: blog.blogDesc,
+              uid: this._uid,
+              photoUrl: img,
+              status: 'Published',
+              createdAt: firebase.database.ServerValue.TIMESTAMP,
+              updatedAt: firebase.database.ServerValue.TIMESTAMP,
+              blogTitle: blog.blogTitle,
+              blogUrl: blog.blogUrl
+            }).then(resolve => {
+              this.updateStatusEdit(blog.blogCat, blog.blogDesc, img, wib, contenttag);
+              this._notify.successAttempt("Web Content Added!");
+            }, reject => {
+              this._notify.errorAttempt("Ouch! something is wrong!")
+            })
+            .catch(reject => {
+              this._notify.errorAttempt("Ouch! something is wrong!")
+            });
+  }
+
+
 }

@@ -71,7 +71,8 @@ createStatus(status, color, tags, type) {
          rating: 0,
          createdAt: firebase.database.ServerValue.TIMESTAMP,
          updatedAt: firebase.database.ServerValue.TIMESTAMP,
-         tags: tags
+         tags: tags,
+         contenttag: type
        }).then(resolve => {
         
       }, reject => {
@@ -259,6 +260,10 @@ getStatus() {
     if(blogPath){
       blogPath.remove();
     }
+    const webPath = this.af.database.object(`eWebcontent/${sid}`);
+    if(webPath){
+      webPath.remove();
+    }
     const audioPath = this.af.database.object(`eAudios/${sid}`);
     if(audioPath){
       audioPath.remove();
@@ -305,6 +310,14 @@ getStatus() {
     let storageRefAudio = firebase.storage().ref().child(`eAudio/${sid}`);
     if(storageRefAudio){
       storageRefAudio.delete().then(function() {
+        //this._notify.successAttempt("File Was successfully deleted!");
+      }).catch(function(error) {
+        //this._notify.errorAttempt("Ouch! Something bad has happened!"); 
+      });
+    }
+    let storageRefWebcontent = firebase.storage().ref().child(`eWebcontent/${sid}`);
+    if(storageRefWebcontent){
+      storageRefWebcontent.delete().then(function() {
         //this._notify.successAttempt("File Was successfully deleted!");
       }).catch(function(error) {
         //this._notify.errorAttempt("Ouch! Something bad has happened!"); 

@@ -80,5 +80,7 @@ user_updates: boolean = true;
 delDraft(e){
   this._pageService.delDraft(e);
 }
-
+onStatusChecked(status) {
+    this._StatusService.rateStatus(status);
+  }
 }

@@ -21,6 +21,7 @@ import { CommonsModule } from './containers/commons/commons.module';
 import { ContentModule } from './containers/content/content.module';
 import { MediaModule } from './containers/media/media.module';
 import { AuthModule } from './containers/auth/auth.module';
+import { DashboardModule } from './containers/dashboard/dashboard.module';
 import { AppComponent } from './app.component';
 import { Store } from './store';
 
@@ -32,18 +33,20 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'about', loadChildren: './containers/commons/commons.module#CommonsModule' },
-  { path: 'add', loadChildren: './containers/content/content.module#ContentModule' },
-  { path: 'add/blog', loadChildren: './containers/content/content.module#ContentModule' },
-  { path: 'content/:string/:id/:string', loadChildren: './containers/content/content.module#ContentModule' },
+ /*{ path: 'add', loadChildren: './containers/content/content.module#ContentModule' },
+  { path: 'add/blog', loadChildren: './containers/content/content.module#ContentModule'},
+  { path: 'content/:string/:pid/:string', loadChildren: './containers/content/content.module#ContentModule'},
  { path: 'content/_blog/:string/:bid/:string', loadChildren: './containers/content/content.module#ContentModule' },
+  { path: 'webcontent/link/:string/:cid/:string/_blank', loadChildren: './containers/content/content.module#ContentModule' },
   { path: '**', loadChildren: './containers/commons/commons.module#CommonsModule' },
    { path: 'stories', loadChildren: './containers/content/content.module#ContentModule' },
   { path: 'authentication', loadChildren: './containers/auth/auth.module#AuthModule' },
   { path: 'music', loadChildren: './containers/media/media.module#MediaModule' },
   { path: 'music', loadChildren: './containers/media/media.module#MediaModule' },
   { path: 'music/audio/:mid/:string', loadChildren: './containers/media/media.module#MediaModule' },
-  //{ path: 'user/:id/:string', loadChildren: './containers/auth/auth.module#AuthModule' },
-  //{ path: 'edit/:id/:string', loadChildren: './containers/auth/auth.module#AuthModule' },
+  { path: 'user/:id/:string', loadChildren: './containers/auth/auth.module#AuthModule' },
+  { path: 'edit/:id/:string', loadChildren: './containers/auth/auth.module#AuthModule' },
+  */
 ];
 
 
@@ -102,6 +105,7 @@ let options: any = {
     CommonsModule,
     ContentModule,
     AuthModule,
+    DashboardModule,
     MediaModule,
     NgPipesModule,
     MomentModule

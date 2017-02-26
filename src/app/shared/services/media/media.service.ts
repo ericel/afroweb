@@ -94,7 +94,8 @@ addMuisc(upload, token, url, ext, file_type){
          src: src,
          createdAt: firebase.database.ServerValue.TIMESTAMP,
          updatedAt: firebase.database.ServerValue.TIMESTAMP,
-         tags: file_type
+         tags: file_type,
+         contenttag: "Audio"
     });
 }
 

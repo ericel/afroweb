@@ -11,12 +11,14 @@ import { SimpleTinyCard } from './../../shared/components';
 import { SharedModule } from './../../shared/shared.module';
 import { AddComponent } from './add/add.component';
 import { BlogComponent } from './add/blog/blog.component';
-import { ContentpageComponent } from './contentpage/contentpage.component';
-import { ContentblogComponent } from './contentpage/contentblog.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { Routes, RouterModule } from '@angular/router';
 import { EditblogComponent } from './add/blog/editblog/editblog.component';
 import { LinkyModule } from 'angular2-linky';
+import { WebcontentComponent } from './contentpage/webcontent/webcontent.component';
+import { StatusComponent } from './contentpage/status/status.component';
+import { BlogcontentComponent } from './contentpage/blogcontent/blogcontent.component';
+
 const routes: Routes = [
 { path: 'add', component: AddComponent,
     data: {
@@ -46,9 +48,10 @@ const routes: Routes = [
     }
  },
   {
-   path: 'content/_blog/:string/:bid/:string',
-   component: ContentblogComponent
+   path: 'content/_blog/:string/:cid/:string',
+   component: BlogcontentComponent
   },
+  
   {
    path: '_blog/editblog/:bid/:string',
    component: EditblogComponent,
@@ -61,9 +64,13 @@ const routes: Routes = [
     }
   },
    {
-   path: 'content/:string/:id/:string',
-   component: ContentpageComponent
+   path: 'content/:string/:pid/:string',
+   component: StatusComponent
   },
+  {
+   path: 'webcontent/:string/:wid/:string',
+   component:  WebcontentComponent
+  }
 ];
 
 @NgModule({
@@ -72,9 +79,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule, ReactiveFormsModule,
     MaterialModule.forRoot(),
-     NgPipesModule,
+    NgPipesModule,
     MaterialModule.forRoot(),
-     AdsenseModule.forRoot({
+    AdsenseModule.forRoot({
       adClient: 'ca-pub-2243338195594977',
       adSlot: 7979162777
     }),
@@ -86,11 +93,12 @@ const routes: Routes = [
   declarations: [
     AddComponent,
     BlogComponent,
-    ContentpageComponent,
-    ContentblogComponent,
     BlogsComponent,
     SimpleTinyCard,
-    EditblogComponent
+    EditblogComponent,
+    WebcontentComponent,
+    StatusComponent,
+    BlogcontentComponent
   ]
 })
 export class ContentModule { }

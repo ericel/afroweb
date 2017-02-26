@@ -1,9 +1,9 @@
 <main class="main">
    <div class="container-fluid">
- <div *ngIf="!pageOk && !authOk" class="wait">
+ <div *ngIf="!pageOk && !authOk && !page" class="wait">
         <md-progress-spinner mode="indeterminate" color="primary"></md-progress-spinner>
   </div>
-<div *ngIf="pageOk && authOk" class="row gutter-20 animated slideInUp">
+<div *ngIf="pageOk && authOk && page" class="row gutter-20 animated slideInUp">
   <div class="col-md-3">
       <app-adscreate class="no-sm-no"></app-adscreate>
        <app-adsone></app-adsone>
@@ -30,7 +30,7 @@
       </md-card-header>
       <img *ngIf="page.photoUrl" md-card-image src="{{page.photoUrl}}">
       <md-card-content>
-           <div [outerHTML]="page.status | linky"></div>
+           <div [innerHTML]="page.status | linky"></div>
 
       </md-card-content>
       <md-card-actions class="container-fluid">

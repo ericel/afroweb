@@ -1,4 +1,7 @@
 /*Home Statuses */
+.mat-button{
+	padding:0 5px !important;
+}
 .mat-card-actions{
     margin-bottom: 0px !important;
 }

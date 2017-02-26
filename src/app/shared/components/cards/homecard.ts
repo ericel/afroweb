@@ -51,9 +51,11 @@ import { Subscription } from 'rxjs';
                     <audio vgMedia id="myAudio" preload="auto">
                         <source *ngFor="let audio of sources" [src]="audio.src" [type]="audio.tags">
                     </audio>
-                     <button md-button color="primary" (click)="showLove()"><i class="fa fa fa-heart fa-2x" aria-hidden="true"></i></button> {{status.rating}}
              </vg-player>  
         <h1>{{status.status}}</h1>
+       
+          <button md-button color="primary" (click)="showLove()"><i class="fa fa fa-heart fa-2x" aria-hidden="true"></i></button> {{status.rating}}
+  
        </md-card-content>
         <md-card-actions>
         <div class="divider"></div>
@@ -93,10 +95,14 @@ import { Subscription } from 'rxjs';
         <button md-button (click)="openDialog()"><i class="fa fa-share-alt-square fa-2x" aria-hidden="true"></i></button>
         </div>
         <div  class="pull-right">
-        <button md-button *ngIf="status.type === 'Question'" routerLink="/content/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye" aria-hidden="true"></i></span><span class="no-sm-no">Help Answer</span></button>
-        <button md-button *ngIf="status.type === 'Status Update'" routerLink="/content/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">More of this</span></button>
+        <button md-button *ngIf="status.contenttag === 'Question'" routerLink="/content/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye" aria-hidden="true"></i></span><span class="no-sm-no">Help Answer</span></button>
+        <button md-button *ngIf="status.contenttag === 'Status Update'" routerLink="/content/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">More..</span></button>
         
-        <button md-button *ngIf='status.type !== "Status Update" && status.type !== "Question"' routerLink="/content/_blog/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">Read More</span></button>
+        <button md-button *ngIf='status.contenttag === "Webcontent"' routerLink="/webcontent/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">More..</span></button>
+
+        <button md-button *ngIf='status.contenttag !== "Status Update" && status.contenttag !== "Question" && status.contenttag !== "Webcontent"' routerLink="/content/_blog/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">More..</span></button>
+
+         
 
       
         <button md-button data-toggle="collapse" [attr.data-target]="'#' + status.sid" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-commenting fa-2x" aria-hidden="true"></i></button>
@@ -112,8 +118,9 @@ import { Subscription } from 'rxjs';
         <div class="comments">
         <app-commentscard [status]="status" [limit]="3">
         </app-commentscard>
-          <div class="more-c" *ngIf='status.type === "Status Update" || status.type === "Question"'><a  routerLink="/content/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"> Load more comments</a></div>
-          <div class="more-c" *ngIf='status.type !== "Status Update" && status.type !== "Question"'><a  routerLink="/content/_blog/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"> Load more comments</a></div> 
+          <div class="more-c" *ngIf='status.contenttag === "Status Update" || status.contenttag === "Question"'><a  routerLink="/content/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"> Load more comments</a></div>
+           <div class="more-c" *ngIf='status.contenttag === "Webcontent"'><a  routerLink="/Webcontent/link/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}/_blank"> Load more comments</a></div>
+          <div class="more-c" *ngIf='status.contenttag !== "Status Update" && status.contenttag !== "Question" && status.contenttag !== "Webcontent"'><a  routerLink="/content/_blog/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}/blog.html"> Load more comments</a></div> 
       </div>  
         </div>
 
