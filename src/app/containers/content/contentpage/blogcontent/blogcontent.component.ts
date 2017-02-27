@@ -39,7 +39,7 @@ sub: any;
         
         this._pageService.getPage(this.cid).subscribe(page =>  {this.page = page;});
         this._pageService.getPageBlg(this.cid).subscribe(pageBlg =>  {this.pageBlg = pageBlg; 
-          this.metaService.setTitle(this.pageBlg.blogTitle);
+          this.metaService.setTitle(this.pageBlg.blogTitle.replace(/<(?:.|\n)*?>/gm, ''));
           if(this.pageBlg){
             this.pageOk = true;  
           } else {
@@ -49,8 +49,12 @@ sub: any;
            if(this.auth){
             this.authOk = true;
           }
-         
+          this.metaService.setTag('og:title', this.pageBlg.blogTitle.replace(/<(?:.|\n)*?>/gm, ''));
           this.metaService.setTag('author', this.auth.name);
+          this.metaService.setTag('description', this.pageBlg.blogDesc.replace(/<(?:.|\n)*?>/gm, ''));
+          this.metaService.setTag('keywords', this.pageBlg.blogDesc.trim().replace(/\s+/g, ", ").replace(/<(?:.|\n)*?>/gm, ''));
+          this.metaService.setTag('og:image',this.pageBlg.photoUrl);
+          this.metaService.setTag('twitter:image',this.pageBlg.photoUrl);
         });
 
      

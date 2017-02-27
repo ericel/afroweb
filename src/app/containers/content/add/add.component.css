@@ -6,7 +6,6 @@ ol li {
 }
 @media screen and (min-width: 768px){
     .start-01 {
-        width: 900px;
         margin: 20px auto;
     }
 }
@@ -34,7 +33,6 @@ ol li {
 }
 .choose .col-md-4 {
      min-height: 200px;
-     
      text-align: center;
      cursor: pointer;
     align-items: center;

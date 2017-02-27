@@ -4,6 +4,7 @@ import { AuthService } from '../../../../shared/services/auth/auth.service';
 import { PageService } from '../../../../shared/services/page/page.service';
 import { StatusService } from '../../../../shared/services/status/status.service';
 import { MetaService } from 'ng2-meta/src';
+import {DomSanitizer} from "@angular/platform-browser";
 @Component({
   selector: 'app-webcontent',
   templateUrl: './webcontent.component.html',
@@ -20,7 +21,7 @@ user;webpageslike;
 comments: any;
 webpageBlg: any;
 isBlog: boolean = false;
-sub: any;
+sub: any;srcUrl;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -28,6 +29,7 @@ sub: any;
     private _pageService: PageService,
     private _statusService: StatusService,
     private metaService: MetaService,
+    private domSanitizer : DomSanitizer
   ) { }
 
   ngOnInit() {
@@ -37,7 +39,7 @@ sub: any;
       }
         this._pageService.getPage(this.wid).subscribe(page =>  {this.webpage = page;});
         this._pageService.getWebPage(this.wid).subscribe(pageBlg =>  {this.webpageBlg = pageBlg; 
-          this.metaService.setTitle(this.webpageBlg.blogTitle);
+          this.metaService.setTitle(this.webpageBlg.blogTitle.replace(/<(?:.|\n)*?>/gm, ''));
           if(this.webpageBlg){
             this.webcontentOk = true;  
           } else {
@@ -49,7 +51,13 @@ sub: any;
           }
          
           this.metaService.setTag('author', this.auth.name);
-        });
+          this.metaService.setTag('description', this.webpageBlg.blogDesc.replace(/<(?:.|\n)*?>/gm, ''));
+          this.metaService.setTag('keywords', this.webpageBlg.blogDesc.trim().replace(/\s+/g, ", ").replace(/<(?:.|\n)*?>/gm, ''));
+          this.metaService.setTag('og:image',this.webpageBlg.photoUrl);
+          this.metaService.setTag('twitter:image',this.webpageBlg.photoUrl);
+      
+      this.srcUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(pageBlg.videoUrl); 
+   });
 
      
       // this._statusService.getComments(this.wid).subscribe(comments => this.comments = comments); 

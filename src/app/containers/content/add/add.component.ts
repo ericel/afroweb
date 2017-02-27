@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -8,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class AddComponent implements OnInit {
 instruct: boolean = true;
 choose: boolean = false;
-  constructor() { }
+lastDialogResult: string; 
+  constructor(
+    private _dialog: MdDialog
+  ) { }
 
   ngOnInit() {
     this.countDown();
@@ -28,5 +31,7 @@ countDown() {
         }
     }, 1000);
  }
+
+
 }
 

@@ -36,7 +36,9 @@ isBlog: boolean = false;
         this.pid = params['pid'];
       } 
         this._pageService.getPage(this.pid).subscribe(page =>  {this.page = page; 
-            this.metaService.setTitle(this.page.status);
+            this.metaService.setTitle(this.page.status.replace(/<(?:.|\n)*?>/gm, ''));
+            
+           
           if(this.page){
             this.pageOk = true;
           }
@@ -51,6 +53,10 @@ isBlog: boolean = false;
           if(this.page.type !== "Question"){
              this.metaService.setTag('author', "Help Answer");
           }
+
+          this.metaService.setTag('og:title', this.page.status.replace(/<(?:.|\n)*?>/gm, ''));
+          this.metaService.setTag('description', this.page.status.replace(/<(?:.|\n)*?>/gm, ''));
+          this.metaService.setTag('keywords', this.page.status.trim().replace(/\s+/g, ", ").replace(/<(?:.|\n)*?>/gm, ''));
         });
 
       });

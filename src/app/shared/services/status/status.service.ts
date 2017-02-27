@@ -98,7 +98,8 @@ createQuestion( question, tags, color, type ) {
          rating: 0,
          createdAt: firebase.database.ServerValue.TIMESTAMP,
          updatedAt: firebase.database.ServerValue.TIMESTAMP,
-         tags: tags
+         tags: tags,
+         contenttag: type
       }).then(resolve => {
       }, reject => {
         this._notify.errorAttempt("Ouch! question couldn't be added!")

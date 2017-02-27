@@ -15,8 +15,8 @@
   <md-card class="shadow-2 content-update" >
    <md-card-header>
           <img  md-card-avatar src="{{auth.avatar}}">
-          <md-card-title>{{auth.name}}</md-card-title>
-          <md-card-subtitle>{{page.type}} {{page.createdAt | amTimeAgo:true}} ago! 
+          <md-card-title><a routerLink="/user/{{ auth.uid }}/{{auth.username | slugify}}">{{auth.name}}</a> {{page.createdAt | amTimeAgo:true}} ago! </md-card-title>
+          <md-card-subtitle>{{page.type}} 
           </md-card-subtitle>
          <span class="pull-right-set"><button md-button [md-menu-trigger-for]="menu">
         <i class="fa fa fa-ellipsis-v fa-1x" aria-hidden="true"></i>

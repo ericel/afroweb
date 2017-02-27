@@ -13,7 +13,7 @@ import {SlugifyPipe} from 'ngx-pipes/src/app/pipes/string/slugify';
    </div>
   <div class="close"> <button  md-button (click)="close()">X</button></div>
    <md-card>
-  <app-socialshare [status]="status"></app-socialshare>
+  <app-socialshare [status]="status" [title]="status.status | shorten: 78"></app-socialshare>
   </md-card>
   </div>
   `,
@@ -24,6 +24,7 @@ import {SlugifyPipe} from 'ngx-pipes/src/app/pipes/string/slugify';
 export class ShareCard implements OnInit {
  @Output() createshare = new EventEmitter();
  @Input() status: any;
+
  statusUrl;statusDesc;statusPhotoUrl;
   constructor(
     private _dialog: MdDialog,
@@ -35,9 +36,9 @@ export class ShareCard implements OnInit {
      this.statusUrl =  `${this.slugifyPipe.transform(this.status.type)}/${this.slugifyPipe.transform(this.status.sid)}/${this.slugifyPipe.transform(this.status.status)}/`;
      if(this.status.type == "Status Update")
      {
-       this.statusPhotoUrl = "https://www.idonsuffer.com/assets/img/_status.png";
+       this.statusPhotoUrl = "https://weytindey.com/assets/img/_status.png";
      } else if (this.status.type == "Question"){
-        this.statusPhotoUrl =  "https://www.idonsuffer.com/assets/img/_status_q.png";
+        this.statusPhotoUrl =  "https://weytindey.com/assets/img/_status_q.png";
      } else {
        this.statusPhotoUrl =  this.status.photoUrl;
      }
@@ -55,26 +56,29 @@ export class ShareCard implements OnInit {
   <div class="row sharecard" style="text-align:center; margin:15px 0;">
    <div class="col-4" style="text-align:center;">
      <a class="btn btn-social btn-facebook" href="https://www.facebook.com/dialog/feed?app_id=1732300390419025
-                &redirect_uri=https://www.idonsuffer.com/{{statusUrl}}
-                &link=https://www.idonsuffer.com/{{statusUrl}}
+                &redirect_uri={{statusUrl}}
+                &link={{statusUrl}}
+                &name={{isTitle}}
                 &picture={{statusPhotoUrl}}
-                &caption=www.idonsuffer.com
+                &caption=www.weytindey.com | {{status.type}}
+                &author=ojobasi
                 &description={{statusDesc}}.
                 &properties={text:’value1′,key2:’value2′}
-                &actions={name:’I LOVE Africa’,link:’https://www.idonsuffer.com’}">
+                &actions={name:’I LOVE Africa’,link:’https://www.weytindey.com’}&&
+  display=popup">
                  <span class="fa fa-facebook-square">
        </span> <span class="no-big">FB</span> <span class="no-sm-no">Share On Facebook</span></a>
     </div>
     <div class="col-4" style="text-align:center;">
         <a class="btn btn-social btn-twitter"
-        href="http://twitter.com/share?text={{status.status | shorten: 78: '..'}}&url=https://www.idonsuffer.com/{{statusUrl}}&hashtags=afroweb,idonsuffer,africanoneweb">
+        href="https://twitter.com/share?text={{isTitle}}&url=https://www.weytindey.com/{{statusUrl}}&hashtags=afroweb,weytindey,africanoneweb">
         <span class="fa fa-twitter-square">
        </span> <span class="no-big">TW</span> <span class="no-sm-no">Share On Twitter</span>
         </a>
     </div>
     <div class="col-4" style="text-align:center;">
         <a class="btn btn-social btn-google"
-        href="https://plus.google.com/share?url=https://www.idonsuffer.com/{{statusUrl}}&text={{statusDesc}}">
+        href="https://plus.google.com/share?url=https://www.weytindey.com/{{statusUrl}}&text={{statusDesc}}">
         <span class="fa fa-google-plus-square">
        </span> <span class="no-big">G+</span> <span class="no-sm-no">Share On Google</span>
         </a>
@@ -88,6 +92,8 @@ export class ShareCard implements OnInit {
 export class SocialCard implements OnInit {
  @Output() createshare = new EventEmitter();
  @Input() status: any;
+ @Input() title: any;
+ isTitle;
  statusUrl;statusDesc;statusPhotoUrl;
   constructor(
     private _dialog: MdDialog,
@@ -96,18 +102,37 @@ export class SocialCard implements OnInit {
     ) { }
 
   ngOnInit() {
-     this.statusUrl =  `${this.slugifyPipe.transform(this.status.type)}/${this.slugifyPipe.transform(this.status.sid)}/${this.slugifyPipe.transform(this.status.status)}/`;
-     if(this.status.type == "Status Update")
+     
+     if(this.status.contenttag == "Status Update")
      {
-       this.statusPhotoUrl = "https://www.idonsuffer.com/assets/img/_status.png";
-     } else if (this.status.type == "Question"){
-        this.statusPhotoUrl =  "https://www.idonsuffer.com/assets/img/_status_q.png";
-     } else if (this.status.type == "Audio"){
-        this.statusPhotoUrl =  "https://www.idonsuffer.com/assets/img/audio.png";
+       this.statusPhotoUrl = "https://weytindey.com/assets/img/_status.png";
+       this.statusUrl =  `https://weytindey.com/content/${this.slugifyPipe.transform(this.status.type)}/${this.slugifyPipe.transform(this.status.sid)}/${this.slugifyPipe.transform(this.status.status)}`;
+       this.isTitle = "Status Update";
+       this.statusDesc = encodeURIComponent(this.status.status.trim().replace(/<(?:.|\n)*?>/gm, ''));
+     } else if (this.status.contenttag == "Question"){
+        this.statusPhotoUrl =  "https://weytindey.com/assets/img/_status_q.png";
+        this.statusUrl =  `https://weytindey.com/content/${this.slugifyPipe.transform(this.status.type)}/${this.slugifyPipe.transform(this.status.sid)}/${this.slugifyPipe.transform(this.status.status)}`;
+        this.isTitle = this.status.status;
+        this.statusDesc = "Help Answer this question and more!.. Life's most persistent and urgent question is, 'What are you doing for others?' Martin Luther King, Jr";
+     } else if (this.status.contenttag == "Audio"){
+        this.statusPhotoUrl =  "https://weytindey.com/assets/img/audio.png";
+        this.statusUrl =  `https://weytindey.com/music/${this.slugifyPipe.transform(this.status.type)}/${this.slugifyPipe.transform(this.status.sid)}/${this.slugifyPipe.transform(this.status.status)}`;
+        this.isTitle = "Listen and Download Free" + ':' + ' '+ this.status.status;
+        this.statusDesc = "Start sharing your own music online today. Create and share your playlist! \n 10K+ listening now.";
+     } else if (this.status.contenttag == "Webcontent"){
+        this.statusPhotoUrl =  encodeURIComponent(this.status.photoUrl);
+        this.statusUrl =  `https://weytindey.com/webcontent/${this.slugifyPipe.transform(this.status.type)}/${this.slugifyPipe.transform(this.status.sid)}/${this.slugifyPipe.transform(this.title)}`;
+        this.isTitle = this.title.replace(/<(?:.|\n)*?>/gm, '');
+        this.statusDesc = encodeURIComponent(this.status.status.trim().replace(/<(?:.|\n)*?>/gm, ''));
      } else {
-       this.statusPhotoUrl =  this.status.photoUrl;
+       this.statusPhotoUrl =  encodeURIComponent(this.status.photoUrl);
+        this.statusUrl =  `https://weytindey.com/content/_blog/${this.slugifyPipe.transform(this.status.type)}/${this.slugifyPipe.transform(this.status.sid)}/${this.slugifyPipe.transform(this.title)}`;
+      this.isTitle = this.title.replace(/<(?:.|\n)*?>/gm, '');
+      this.statusDesc = encodeURIComponent(this.status.status.trim().replace(/<(?:.|\n)*?>/gm, ''));
      }
-     this.statusDesc = encodeURIComponent(this.status.status.trim())
+ 
+
+  
      
   }
 }

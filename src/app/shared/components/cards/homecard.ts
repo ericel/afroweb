@@ -24,12 +24,17 @@ import { Subscription } from 'rxjs';
           <button md-menu-item (click)="save()">Save Post</button>
           <button *ngIf="isAuthorized && user.uid === status.uid" md-menu-item (click)="delete(status.sid)">Delete</button>
         </md-menu>
-          <md-card-subtitle class="type-0">{{status.type}}</md-card-subtitle>
+          <md-card-subtitle class="type-0">
+          {{status.type}}
+          
+          </md-card-subtitle>
+          
       </md-card-header>
         <img *ngIf="status.photoUrl"  md-card-image  src="{{status.photoUrl}}">
     
       <div  *ngIf='status.type === "Audio"' class="music-010">
         <md-card-content>
+        
                 <vg-player (onPlayerReady)="onPlayerReady($event)"  >
                     <vg-controls>
                         <vg-play-pause></vg-play-pause>
@@ -95,12 +100,12 @@ import { Subscription } from 'rxjs';
         <button md-button (click)="openDialog()"><i class="fa fa-share-alt-square fa-2x" aria-hidden="true"></i></button>
         </div>
         <div  class="pull-right">
-        <button md-button *ngIf="status.contenttag === 'Question'" routerLink="/content/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye" aria-hidden="true"></i></span><span class="no-sm-no">Help Answer</span></button>
+        <button md-button *ngIf="status.contenttag === 'Question'" routerLink="/content/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">Help Answer</span></button>
         <button md-button *ngIf="status.contenttag === 'Status Update'" routerLink="/content/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">More..</span></button>
         
-        <button md-button *ngIf='status.contenttag === "Webcontent"' routerLink="/webcontent/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">More..</span></button>
+        <button md-button *ngIf='status.contenttag === "Webcontent"' routerLink="/webcontent/{{status.type | slugify}}/{{ status.sid }}/{{status.statustitle | slugify}}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">More..</span></button>
 
-        <button md-button *ngIf='status.contenttag !== "Status Update" && status.contenttag !== "Question" && status.contenttag !== "Webcontent"' routerLink="/content/_blog/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">More..</span></button>
+        <button md-button *ngIf='status.contenttag !== "Status Update" && status.contenttag !== "Question" && status.contenttag !== "Webcontent"' routerLink="/content/_blog/{{status.type | slugify}}/{{ status.sid }}/{{status.statustitle | slugify }}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">More..</span></button>
 
          
 

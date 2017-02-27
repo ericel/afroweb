@@ -12,7 +12,7 @@ import { Md5 } from 'ts-md5/dist/md5';
   styleUrls: ['./webcontent.component.css']
 })
 export class WebcontentaddComponent implements OnInit {
-  types = ['Politics', 'Education', 'Health', 'Opinion', 'Gossip', 'Secrets', 'Corruption'];
+types = ['Politics', 'Education', 'Health', 'Opinion', 'Gossip', 'Secrets', 'Corruption', 'Sports', 'Lifestyle', 'Social', 'Food', 'Recipe', 'Economy', 'Video'];
  blogForm : FormGroup;
   submitted = false;
   uploading: boolean = false;
@@ -32,8 +32,9 @@ export class WebcontentaddComponent implements OnInit {
      this.blogForm = this.fb.group({
       'blogCat': [null,  Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])],
       'blogTitle': [null, Validators.compose([Validators.required, Validators.minLength(30), Validators.maxLength(150)])],
-      'blogDesc': [null, Validators.compose([Validators.required, Validators.minLength(150), Validators.maxLength(500)])],
-      'blogUrl': [null, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(100000)])]
+      'blogDesc': [null, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(500)])],
+      'blogUrl': [null, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(100000)])],
+      'videoUrl': ['']
      });
   }
  upload() {

@@ -18,6 +18,9 @@ import { LinkyModule } from 'angular2-linky';
 import { WebcontentComponent } from './contentpage/webcontent/webcontent.component';
 import { StatusComponent } from './contentpage/status/status.component';
 import { BlogcontentComponent } from './contentpage/blogcontent/blogcontent.component';
+import { PageComponent } from './add/page/page.component';
+import { JobComponent } from './add/job/job.component';
+import { PlaceComponent } from './add/place/place.component';
 
 const routes: Routes = [
 { path: 'add', component: AddComponent,
@@ -35,6 +38,33 @@ const routes: Routes = [
        meta: {
         title: 'Write a blog',
         description: 'Write a blog'
+       }
+    }
+ },
+ { path: 'add/page', component: PageComponent,
+  canActivate: [AuthService],
+    data: {
+       meta: {
+        title: 'Create a page',
+        description: 'Create a page'
+       }
+    }
+ },
+ { path: 'add/job', component: JobComponent,
+  canActivate: [AuthService],
+    data: {
+       meta: {
+        title: 'Post a job',
+        description: 'Post a job'
+       }
+    }
+ },
+ { path: 'add/place', component: PlaceComponent,
+  canActivate: [AuthService],
+    data: {
+       meta: {
+        title: 'List a Place',
+        description: 'List a place'
        }
     }
  },
@@ -98,7 +128,10 @@ const routes: Routes = [
     EditblogComponent,
     WebcontentComponent,
     StatusComponent,
-    BlogcontentComponent
+    BlogcontentComponent,
+    PageComponent,
+    JobComponent,
+    PlaceComponent
   ]
 })
 export class ContentModule { }

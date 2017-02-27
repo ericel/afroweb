@@ -28,7 +28,7 @@ import {VgBufferingModule} from 'videogular2/buffering';
     }),
     RouterModule,
     MomentModule,
-   // TagInputModule,
+    //TagInputModule,
     MasonryModule,
     LinkyModule,
      VgCoreModule,

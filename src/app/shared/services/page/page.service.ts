@@ -166,7 +166,7 @@ publishBlog(blog, photoUrl) {
          blogTitle: blog.blogTitle,
          photoUrl: photoUrl
        }).then(resolve => {
-        this.updateStatus(blog.blogCat, blog.blogDesc, photoUrl, blog.blogCat);
+        this.updateStatus(blog.blogCat, blog.blogDesc, photoUrl, blog.blogCat, blog.blogTitle);
         this._notify.successAttempt("Nicely Done! Blog was successfully published!")
       }, reject => {
         this._notify.errorAttempt("Ouch! something is wrong!")
@@ -201,11 +201,12 @@ updateEditBlogPhoto(url, id) {
    }); 
 }
 
-updateStatus(type, status, photoUrl, contenttag){
+updateStatus(type, status, photoUrl, contenttag, statustitle){
     const token = window.localStorage.getItem(this.CREATE_KEY);
     let path = this.af.database.object(`eStatus/${token}`);
     return path.set({
          sid: token,
+         statustitle: statustitle,
          status: status,
          color: "#fff",
          uid: this._uid,
@@ -237,7 +238,7 @@ updateStatus(type, status, photoUrl, contenttag){
          photoUrl: img,
          updatedAt: firebase.database.ServerValue.TIMESTAMP
        }).then(resolve => {
-        this.updateStatusEdit(blog.blogCat, blog.blogDesc, img, id,  blog.blogCat);
+        this.updateStatusEdit(blog.blogCat, blog.blogDesc, img, id,  blog.blogCat, blog.blogTitle);
         this._notify.successAttempt("Nicely Done! Blog was successfully Updated!")
       }, reject => {
         this._notify.errorAttempt("Ouch! something is wrong!")
@@ -247,10 +248,11 @@ updateStatus(type, status, photoUrl, contenttag){
     });
  }
 
- updateStatusEdit(type, status, photoUrl, id, contenttag){
+ updateStatusEdit(type, status, photoUrl, id, contenttag, statustitle){
     let path = this.af.database.object(`eStatus/${id}`);
     return path.update({
          sid: id,
+         statustitle: statustitle,
          status: status,
          color: "#fff",
          uid: this._uid,
@@ -278,6 +280,7 @@ delDraft(id){
               pid: wib,
               blogCat: blog.blogCat,
               blogDesc: blog.blogDesc,
+              videoUrl: blog.videoUrl,
               uid: this._uid,
               photoUrl: img,
               status: 'Published',
@@ -286,7 +289,7 @@ delDraft(id){
               blogTitle: blog.blogTitle,
               blogUrl: blog.blogUrl
             }).then(resolve => {
-              this.updateStatusEdit(blog.blogCat, blog.blogDesc, img, wib, contenttag);
+              this.updateStatusEdit(blog.blogCat, blog.blogDesc, img, wib, contenttag, blog.blogTitle);
               this._notify.successAttempt("Web Content Added!");
             }, reject => {
               this._notify.errorAttempt("Ouch! something is wrong!")

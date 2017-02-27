@@ -27,7 +27,7 @@ id; auth; page; pageOk: boolean = false;
 
   ngOnInit() {
    this.route.params.subscribe(params => {
-        this.id = params['mid'];
+     this.id = params['mid'];
      this._pageService.getPage(this.id).subscribe(page =>  {this.page = page;
       if(this.page){
             this.pageOk = true;  
@@ -35,7 +35,7 @@ id; auth; page; pageOk: boolean = false;
      });
      this._mediaService.getAudio(this.id).subscribe(sources => {
        //this.metaService.setTag('og:image',this.product.imageURL);
-        this._metaService.setTitle(sources.filename);
+        this._metaService.setTitle(sources.filename.replace(/<(?:.|\n)*?>/gm, ''));
         this._authService.userById(sources.uid).subscribe(auth => {this.auth = auth; 
         this.sources = [
           {

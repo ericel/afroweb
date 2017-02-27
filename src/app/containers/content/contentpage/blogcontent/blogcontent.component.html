@@ -14,8 +14,8 @@
         <md-card class="shadow-2 mar-10 page-header">
    <md-card-header>
           <img  md-card-avatar src="{{auth.avatar}}">
-          <md-card-title><a routerLink="/user/{{ auth.uid }}/{{auth.username | slugify}}">{{auth.name}}</a></md-card-title>
-          <md-card-subtitle>{{pageBlg.type}} {{pageBlg.createdAt | amTimeAgo:true}} ago! <br> <em> {{pageBlg.blogCat}}</em>
+          <md-card-title><a routerLink="/user/{{ auth.uid }}/{{auth.username | slugify}}">{{auth.name}}</a> posted {{pageBlg.createdAt | amTimeAgo:true}} ago!</md-card-title>
+          <md-card-subtitle> <em> {{pageBlg.blogCat}}</em>
             <h1 >{{pageBlg.blogTitle}}</h1>
           </md-card-subtitle>
          <span class="pull-right-set"><button md-button [md-menu-trigger-for]="menu">
@@ -42,7 +42,7 @@
         </div>
         <div class="clearfix"></div>
       </md-card-actions>
-       <app-socialshare [status]="page"></app-socialshare>
+       <app-socialshare [status]="page" [title]="pageBlg.blogTitle"></app-socialshare>
       <app-commentcard [status]="page">
       </app-commentcard>
       <div class="comments">

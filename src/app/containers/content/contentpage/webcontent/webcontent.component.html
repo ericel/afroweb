@@ -14,8 +14,8 @@
         <md-card class="shadow-2 mar-10 page-header">
    <md-card-header>
           <img  md-card-avatar src="{{auth.avatar}}">
-          <md-card-title><a routerLink="/user/{{ auth.uid }}/{{auth.username | slugify}}">{{auth.name}}</a></md-card-title>
-          <md-card-subtitle>{{webpageBlg.type}} {{webpageBlg.createdAt | amTimeAgo:true}} ago! <br> <em> {{webpageBlg.blogCat}}</em>
+          <md-card-title><a routerLink="/user/{{ auth.uid }}/{{auth.username | slugify}}">{{auth.name}}ago!</a> posted {{webpageBlg.createdAt | amTimeAgo:true}} </md-card-title>
+          <md-card-subtitle>{{webpageBlg.blogCat}} 
             <h1 >{{webpageBlg.blogTitle}}</h1>
           </md-card-subtitle>
          <span class="pull-right-set"><button md-button [md-menu-trigger-for]="menu">
@@ -28,7 +28,9 @@
         </md-menu>
         
       </md-card-header>
-      <img class="blg-image" *ngIf="webpageBlg.photoUrl" md-card-image src="{{webpageBlg.photoUrl}}">
+      <iframe *ngIf="(webpageBlg.videoUrl).length > 2" [src]="srcUrl" width="100%" height="400" type='application/pdf'></iframe>
+    
+      <img  class="blg-image" *ngIf="(webpageBlg.videoUrl).length < 2 && webpageBlg.photoUrl" md-card-image src="{{webpageBlg.photoUrl}}">
       <md-card-content class="blog-post">
           <div [innerHTML]="webpageBlg.blogDesc"></div>
           <div class="mar-15">
@@ -45,7 +47,7 @@
         </div>
         <div class="clearfix"></div>
       </md-card-actions>
-       <app-socialshare [status]="webpage"></app-socialshare>
+       <app-socialshare [status]="webpage" [title]="webpageBlg.blogTitle"></app-socialshare>
       <app-commentcard [status]="webpage">
       </app-commentcard>
       <div class="comments">

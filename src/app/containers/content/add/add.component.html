@@ -5,7 +5,7 @@
     <div *ngIf="choose" class="start-01 choose">
          <md-card>
              <div class="row">
-                 <div  class="col-md-4">
+                 <div  class="col-md-4" routerLink="/add/page">
                     <i class="fa fa-free-code-camp fa-2x color-red" aria-hidden="true"></i>
                     <h1>
                      Create a Page
@@ -14,12 +14,12 @@
                          Community, Group, Course, Activits, Social Welfare
                      </p>
                  </div>
-                 <div class="col-md-4">
+                 <div class="col-md-4" routerLink="/add/job">
                      <i class="fa fa-briefcase fa-2x color-green" aria-hidden="true"></i>
                      <h1>Post A Job</h1>
                      <p>It's all free to post a job opening with us!</p>
                  </div>
-                  <div class="col-md-4">
+                  <div class="col-md-4" routerLink="/add/blog">
                      <a routerLink="/add/blog"> <i class="fa fa-pencil-square-o fa-2x color-pink" aria-hidden="true"></i>
                       <h1>
                      Write a Blog
@@ -31,14 +31,14 @@
                   </div>
              </div>
               <div class="row">
-                 <div class="col-md-4">
+                 <div class="col-md-4" routerLink="/add/place">
                     <i class="fa fa-map-marker fa-2x" color="primary" aria-hidden="true"></i>
                     <h1>
                      List A Place
                     </h1>
                     <p>Restaurant, Business, Office</p>
                  </div>
-                 <div class="col-md-4">
+                 <!--<div class="col-md-4" (click)="openDialog()">
                      <i class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
                      <h1>
                      Ask A Question
@@ -46,8 +46,8 @@
                      <p>
                          Have a question about Africa? Ask now!
                      </p>
-                 </div>
-                  <div class="col-md-4" routerLink="/add/media">
+                 </div>-->
+                  <div class="col-md-4" routerLink="/media/upload">
                       <i class="fa fa-share-alt-square fa-2x color-primary" aria-hidden="true"></i> 
                       <h1>
                      Share a File

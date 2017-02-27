@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./blog.component.css']
 })
 export class BlogComponent implements OnInit {
-types = ['Politics', 'Education', 'Health', 'Opinion', 'Gossip', 'Secrets', 'Corruption'];
+types = ['Politics', 'Education', 'Health', 'Opinion', 'Gossip', 'Secrets', 'Corruption', 'Sports', 'Lifestyle', 'Social', 'Food', 'Recipe', 'Economy'];
 editorTxt = "Start Writing your blog...";
   title_0: boolean = false;
   title_1: boolean = false;

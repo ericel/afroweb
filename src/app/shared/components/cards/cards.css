@@ -120,6 +120,13 @@ md-card-header {
     margin: 5px 0;
   }
 }
+md-card-header {
+    /*white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    */
+    margin-bottom: 15px !important;
+}
 /* End Home Statuses */
 
 /* Audio File Cards */

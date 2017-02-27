@@ -544,3 +544,11 @@ img.blg-image {
 }
 /*End Tooltip Design */
 
+@media screen and (max-width: 768px){
+.mat-card-subtitle h1 {
+    font-size: 1em !important;
+}
+}
+.mat-card-header {
+    height: auto !important;
+}
