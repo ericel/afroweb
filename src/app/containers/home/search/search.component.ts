@@ -47,7 +47,7 @@ searchHasResults: boolean = false;
       var thisObject = [];
       for (var keys in this.searches) {
         var getThisObject = this.searches[keys];
-        if ((getThisObject.status).toLowerCase().indexOf(name) !== -1 ) {
+        if (((getThisObject.status).toLowerCase()).indexOf(name) !== -1 ) {
           thisObject.push(this.searches[keys]);
         }
       }
