@@ -17,8 +17,8 @@ import { Subscription } from 'rxjs';
    <md-card class="music-01" *ngIf="audio">
         <md-card-header>
             <img md-card-avatar src="{{audio.avatar}}" alt="{{audio.name}}">
-              <md-card-title>uploaded by <a routerLink="/user/{{ audio.uid }}/{{audio.name | slugify}}">{{audio.name | shorten: 8: '.'}}</a>  {{audio.createdAt | amTimeAgo:true}} ago!</md-card-title>
-               <md-card-subtitle>cameroon</md-card-subtitle>
+              <md-card-title>uploaded by <a routerLink="/user/{{ audio.uid }}/{{audio.username | slugify}}">{{audio.username | shorten: 8: '.'}}</a>  {{audio.createdAt | amTimeAgo:true}} ago!</md-card-title>
+               <md-card-subtitle>{{audio.country}}</md-card-subtitle>
                   <span class="pull-right-set"><button md-button [md-menu-trigger-for]="menu">
                     <i class="fa fa fa-ellipsis-v fa-1x" aria-hidden="true"></i>
                     </button></span>
@@ -56,12 +56,15 @@ import { Subscription } from 'rxjs';
               
                </md-card-content>
                 <md-card-actions>
-                     <button md-button class="pull-left" (click)="onClickPlay($event)">
+                          <div class="pull-left">
+                          <button md-button  (click)="onClickPlay($event)">
                         <i *ngIf="!playing" class="fa fa-play-circle-o fa-2x" aria-hidden="true"></i>
-                           <i *ngIf="playing" class="fa fa-pause-circle-o fa-2x" aria-hidden="true"></i>
+                           <i *ngIf="playing" class="fa fa-pause-circle-o fa-2x" aria-hidden="true"></i> Listen now
                           </button>
-                        <div class="pull-right play-anim">Listen now</div>
-                        <a class="link-00" routerLink="/music/audio/{{ audio.mid }}/{{audio.filename | slugify | shorten: 50}}"><i class="fa fa-external-link" aria-hidden="true"></i></a>
+                         </div>
+                         <a class="pull-rightm" routerLink="/music/audio/{{audio.mid}}/{{audio.filename | slugify}}">
+                             music link
+                         </a>
                       </md-card-actions>
                       <div *ngIf="playing" class="animations-player">
                       <div *ngFor="let item of createRange(41)">
@@ -106,6 +109,7 @@ api: VgAPI;
     this.sources = [
           this.audio
     ];
+  
   }
 
   onClickPlay(e){

@@ -16,7 +16,7 @@
              <div class="mar-15 header-001">
                 <button md-button><i class="fa fa-download" aria-hidden="true"></i> Download</button>
                <button *ngIf="pageOk"  md-button color="primary" (click)="showLove(page)"><i class="fa fa fa-heart fa-1x" aria-hidden="true"></i> {{page.rating}} showed love!</button>
-              <button md-raised-button color="primary" class="pull-right" routerLink="media/upload">Upload</button>
+              <button md-raised-button color="primary" class="pull-right" routerLink="/media/upload">Upload</button>
               </div>
             <div *ngIf="!sources" class=" row">
                     <div class="col-md-4"  *ngFor="let item of createRange(32)">
@@ -56,8 +56,24 @@
              <app-commentscard [status]="page" [limit]="1000000">
              </app-commentscard> 
             </div>
+             <div *ngIf="sourcesLike" class="shared-music">
+              <h1>Checkout more of this: </h1>
+            <masonry [useImagesLoaded]="true">
+               
+                <masonry-brick class="col-md-6" *ngFor="let musiclike of sourcesLike;  let i=index">
+                <template [ngIf]="i<10">
+                  <app-audiofilecard 
+                  [audio]="musiclike"
+                  (play)="onAudioPlay(musiclike)"
+                  ></app-audiofilecard>
+                  </template>
+                </masonry-brick>
+              
+              </masonry>
+              
+            </div>
           </md-card>
-      
+          
         </div>
         <div class="col-md-3">
              <app-adslist ></app-adslist>

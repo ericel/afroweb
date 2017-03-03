@@ -31,7 +31,7 @@
     <md-card *ngIf="statuses.length==0">No records found.</md-card>
     <div class="mar-10">
     <masonry [useImagesLoaded]="true"> 
-                      <masonry-brick class="col-md-6" *ngFor="let status of statuses">
+                      <masonry-brick class="col-md-6" *ngFor="let status of statuses | paginate: { itemsPerPage: 10, currentPage: p }">
                       <app-homecard
                       [status]="status"
                       (checked)="onStatusChecked($event)"
@@ -40,6 +40,7 @@
                     <div class="mar-15"></div>
                       </masonry-brick>
        </masonry>
+        <pagination-controls (pageChange)="p = $event" #api></pagination-controls> 
     </div>
   </md-tab>
   <!--<md-tab>

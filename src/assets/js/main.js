@@ -3,7 +3,13 @@ jQuery(document).ready(function($){
 		$(this).toggleClass('open');
 	});
 
-     $('#sm-search').on('click', function(){
+     $('.sm-search').on('click', function(){
+
+       
+      $( '.search-sm' ).toggleClass( "search-sm-y" );
+       
+	 });
+	 $('.search-btn').on('click', function(){
 
        
       $( '.search-sm' ).toggleClass( "search-sm-y" );

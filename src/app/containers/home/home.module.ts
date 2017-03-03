@@ -15,8 +15,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from './../../shared/shared.module';
 import { SitemapComponent } from './sitemap/sitemap.component';
-import { SomeDirective } from './some.directive';
-
+import {Ng2PaginationModule} from 'ng2-pagination';
 const routes: Routes = [
     { path: '', component: HomeComponent,
     data: {
@@ -55,14 +54,14 @@ const routes: Routes = [
     }),
     MomentModule,
     SharedModule,
-    MasonryModule
+    MasonryModule,
+    Ng2PaginationModule
  
   ],
   declarations: [
     HomeComponent,
     SearchComponent,
-    SitemapComponent,
-    SomeDirective
+    SitemapComponent
     ],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

@@ -10,7 +10,7 @@
 	
 	  <span class="app-toolbar-filler"></span>
    <div class="no-big">
-     <button class="pull-right-s cd-3d-nav-trigger" id="sm-search" md-button>
+     <button class="pull-right-s sm-search" md-button>
 			 <i class="fa fa-search" aria-hidden="true"></i>
 			</button>
     </div>
@@ -24,9 +24,9 @@
 					class="flexsearch--input" type="search" placeholder="search"
 					[formControl]="searchForm.controls['search_term']" >
 					<div class="search-error">
-					 <div *ngIf="searchForm.controls['search_term'].hasError('required') && searchForm.controls['search_term'].touched" class="alert alert-danger">Type Search term please...</div>
-        <div *ngIf="searchForm.controls['search_term'].hasError('minlength') && searchForm.controls['search_term'].touched" class="alert alert-danger">Search term must be atleast 3 characters long.</div>
-        <div *ngIf="searchForm.controls['search_term'].hasError('maxlength') && searchForm.controls['search_term'].touched" class="alert alert-danger">Search term can't be more than 50 characters long</div>
+					 <div *ngIf="searchForm.controls['search_term'].hasError('required') && searchForm.controls['search_term'].touched" class="alert alert-danger" mdTooltip="Type Search term please...">Type Search term please...</div>
+        <div *ngIf="searchForm.controls['search_term'].hasError('minlength') && searchForm.controls['search_term'].touched" class="alert alert-danger" mdTooltip="Search term must be atleast 3 characters long.">Search term must be atleast 3 characters long.</div>
+        <div *ngIf="searchForm.controls['search_term'].hasError('maxlength') && searchForm.controls['search_term'].touched" class="alert alert-danger" mdTooltip="Search term can't be more than 50 characters long">Search term can't be more than 50 characters long</div>
 					</div>
 				</div>
 				<span class="flexsearch--close" [style.color]="focusChange()" (click)="reset()"><i class="fa fa-times" aria-hidden="true"></i></span>
@@ -78,23 +78,25 @@
         </md-menu>
 </md-toolbar>
 
-<div class="animated fadeInDown search-sm search-sm-y">
-    <div class="flexsearch">
-		<div class="flexsearch--wrapper">
+
+ <div class="animated fadeInDown search-sm search-sm-y">
 			<form class="flexsearch--form" [formGroup]="searchForm" (ngSubmit)="search(searchForm.value)">
-				<button mdTooltip="search" class="flexsearch--submit-left" [style.color]="focusChange()" md-button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-				<div class="flexsearch--input-wrapper"  [ngClass]="{'has-error':!searchForm.controls['search_term'].valid && searchForm.controls['search_term'].touched}">
+         <div class="flexsearch--input-wrapper"  [ngClass]="{'has-error':!searchForm.controls['search_term'].valid && searchForm.controls['search_term'].touched}">
 					<input [(ngModel)]="search_term" name="search_term" (click)="showStyle = !showStyle" 
 					class="flexsearch--input" type="search" placeholder="search"
 					[formControl]="searchForm.controls['search_term']" >
-					<div class="search-error">
+					<div class="search-error-p">
 					 <div *ngIf="searchForm.controls['search_term'].hasError('required') && searchForm.controls['search_term'].touched" class="alert alert-danger">Type Search term please...</div>
         <div *ngIf="searchForm.controls['search_term'].hasError('minlength') && searchForm.controls['search_term'].touched" class="alert alert-danger">Search term must be atleast 3 characters long.</div>
         <div *ngIf="searchForm.controls['search_term'].hasError('maxlength') && searchForm.controls['search_term'].touched" class="alert alert-danger">Search term can't be more than 50 characters long</div>
 					</div>
 				</div>
+				<div class="text-center mar-15">
+				  	<button class="search-btn" mdTooltip="search" [style.color]="focusChange()" md-raised-button color="primary" type="submit"><i class="fa fa-search fa-2x" aria-hidden="true"></i></button>
+				</div>
 				<span class="flexsearch--close" [style.color]="focusChange()" (click)="reset()"><i class="fa fa-times" aria-hidden="true"></i></span>
 			</form>
-		</div>
+      <div class="mar-15 text-center">
+				<h2> Type a search term and hit 'Enter'</h2>
+      </div>
     </div>
-</div>

@@ -21,7 +21,7 @@ sources:Array<Object>;
   }
 
   ngOnInit() {
-      this._mediaService.getAudios().subscribe(sources => { this.sources = sources;});
+      this._mediaService.getAudios().first().subscribe(sources => { this.sources = sources;});
   }
   
   onAudioPlay(music){
@@ -36,5 +36,15 @@ sources:Array<Object>;
     }
     return arr;
   }
+
+  sortCountry(country){
+    this._mediaService.getAudios().first().subscribe(sources => { 
+       this.sources =  sources.filter(function(a){
+          return a.country === country;
+       });
+    });
+  }
+
+
 }
 

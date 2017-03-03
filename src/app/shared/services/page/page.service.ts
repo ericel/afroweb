@@ -20,7 +20,7 @@ export class PageService {
 page: FirebaseObjectObservable<any>;
 pages: FirebaseListObservable<any>;
 draftList: FirebaseListObservable<any>;
-_uid;_username;pid;
+_uid;_username;pid;webblogs;
 CREATE_KEY: string = 'blog_create_token';
 token;blogPath;pageBlg;
   constructor(
@@ -47,7 +47,13 @@ token;blogPath;pageBlg;
           orderByChild: 'createdAt'
         }
       });
+     
 
+     this.webblogs =  this.af.database.list('eWebcontent',  {
+        query: {
+          orderByChild: 'createdAt'
+        }
+      });
    
 
   }
@@ -70,7 +76,11 @@ getDrafts(id){
       return snapshots;
     });
  }
-
+ getwebBlogs(){
+   return this.webblogs.map(snapshots => {
+      return snapshots;
+    });
+ }
   getPage(id: string) {
       return this.page.map(snapshot => {
         
@@ -80,7 +90,6 @@ getDrafts(id){
   getWebPage(wid: string){
     const pageweb = this.af.database.object(`/eWebcontent`, { preserveSnapshot: true });
     return pageweb.map(snapshot => {
-        
         return snapshot.val()[wid];   
       }) 
   }
@@ -287,7 +296,8 @@ delDraft(id){
               createdAt: firebase.database.ServerValue.TIMESTAMP,
               updatedAt: firebase.database.ServerValue.TIMESTAMP,
               blogTitle: blog.blogTitle,
-              blogUrl: blog.blogUrl
+              blogUrl: blog.blogUrl,
+              contenttag: "webcontent"
             }).then(resolve => {
               this.updateStatusEdit(blog.blogCat, blog.blogDesc, img, wib, contenttag, blog.blogTitle);
               this._notify.successAttempt("Web Content Added!");

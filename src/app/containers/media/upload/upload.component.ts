@@ -70,7 +70,12 @@ uploadfile(upload: any){
     this._mediaService.addMuisc(upload, token, this.uploadedUrl, this.file_ext, this.file_type);
     this.submitted = true;
     let path = '/music/audio';
-    this._notify.countDown(path, token, upload.uploadName);
+    //this._notify.countDown(path, token, upload.uploadName);
+    this.reset();
   }
 
+reset (){
+    this.uploadForm.reset();
+    this.uploaded = false;
+  }
 }

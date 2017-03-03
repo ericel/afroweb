@@ -21,26 +21,29 @@
 <main class="main" >
 
   <div class="container-fluid" *ngIf="searchHasResults">
-    <div class="row gutter-10">
+    <div class="row gutter-20">
         <div class="col-md-3">
         <app-adscreate class="no-sm-no"></app-adscreate>
           <app-adsone ></app-adsone>
           <app-adsmovies class="no-sm-no"></app-adsmovies>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-9">
           <div class="container-fluid">
             <div class="shadow-3 ordered-0">
-              <div class="row">
+              <div class="row text-center-sm">
                 <div class="col-md-4">
                 <div class="tem-head">Search Term:</div>
                   <h1 class="search_term">{{search_term}}</h1>
                 </div>
                 <div class="col-md-6">
-                  <div class="tem-head">Filter Results:</div>
-                  <md-checkbox class="example-margin" [(ngModel)]="checked">News</md-checkbox>
-                  <md-checkbox class="example-margin" [(ngModel)]="checked">Audio</md-checkbox>
-                  <md-checkbox class="example-margin" [(ngModel)]="checked">Updates</md-checkbox>
-                  <md-checkbox class="example-margin" [(ngModel)]="checked">Questions</md-checkbox>
+                  <button  md-button [mdMenuTriggerFor]="menu"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i> <span class="sorter">Sort</span></button>
+                  <md-menu #menu="mdMenu" >
+                    <button md-menu-item (click)="stories()">Stories</button>
+                    <button md-menu-item (click)="music()">Music</button>
+                    <button md-menu-item (click)="jobs()">Jobs</button>
+                    <button md-menu-item (click)="places()">Places</button>
+                    <button md-menu-item (click)="questions()">Questions</button>
+                  </md-menu>
                 </div>
                 <div class="col-md-2">
                 <div class="tem-head">Search Count:</div>
@@ -49,16 +52,12 @@
               </div>
               </div>
             </div>
-      <!--<div class="ms-home"
-        
-         infinite-scroll
-         [infiniteScrollDistance]="scrollDistance"
-         [infiniteScrollThrottle]="throttle"
-         (scrolled)="onScrollDown()">-->
+  
       <div class="ms-home container-fluid mar-15 ">
+        <pagination-controls (pageChange)="p = $event" #api></pagination-controls> 
       <masonry [useImagesLoaded]="true">
      
-        <masonry-brick class="col-md-6" *ngFor="let status of searchedObj">
+        <masonry-brick class="col-md-4" *ngFor="let status of searchedObj | paginate: { itemsPerPage: 12, currentPage: p }">
         <app-homecard
         [status]="status"
         (checked)="onStatusChecked($event)"
@@ -68,12 +67,10 @@
         </masonry-brick>
        
       </masonry>
-       
+       <div *ngIf="searchedObj.length < 1" class="alert alert-warning">No results returned!</div>
     </div>
         </div>
-      <div class="col-md-3">
-             <app-adslist ></app-adslist>
-        </div>
+  
    </div>
 
   </div>

@@ -67,7 +67,7 @@ import { AuthService } from '../../services/auth/auth.service';
 }
 .snip1336 figcaption {
   width: 100%;
-  background-color:  #006064;
+  background-color:  #0097A7;
   padding: 15px !important;
   position: relative;
 }
@@ -80,7 +80,7 @@ import { AuthService } from '../../services/auth/auth.service';
   height: 0;
   border-style: solid;
   border-width: 55px 0 0 400px;
-  border-color: transparent transparent transparent #006064;
+  border-color: transparent transparent transparent #0097A7;
 }
 
 .snip1336 .profile {
@@ -172,7 +172,7 @@ span{
       border-radius: 0 !important;
       box-shadow: 0 1px 1px -2px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px 0 rgba(0,0,0,.12) !important;
           padding: 20px !important;
-      border-bottom: 2px solid #006064 !important;
+      border-bottom: 2px solid #0097A7 !important;
   }
   @media screen and (min-width: 769px){
    md-card {

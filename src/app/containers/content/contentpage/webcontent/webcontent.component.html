@@ -6,7 +6,7 @@
   <div *ngIf="webcontentOk && webauthOk && webpage && webpageBlg" class="row gutter-20 animated slideInUp">
      <div class="col-md-3">
        <app-adscreate class="no-sm-no"></app-adscreate>
-       <app-adsone class="no-sm-no"></app-adsone>
+       <app-adsone ></app-adsone>
        <app-adsmovies class="no-sm-no"></app-adsmovies>
        <app-adsmusic class="no-sm-no"></app-adsmusic>
      </div>
@@ -28,7 +28,7 @@
         </md-menu>
         
       </md-card-header>
-      <iframe *ngIf="(webpageBlg.videoUrl).length > 2" [src]="srcUrl"  frameBorder="0"></iframe>
+      <iframe *ngIf="(webpageBlg.videoUrl).length > 2" [src]="srcUrl"  frameBorder="0" scrolling="no" allowTransparency="true" allowFullScreen="true" data-autoplay="true"></iframe>
     
       <img  class="blg-image" *ngIf="(webpageBlg.videoUrl).length < 2 && webpageBlg.photoUrl" md-card-image src="{{webpageBlg.photoUrl}}">
       <md-card-content class="blog-post">
@@ -36,7 +36,6 @@
           <div class="mar-15">
              <a target="_blank" href="{{webpageBlg.blogUrl}}">Click here to read more of this story</a>
           </div>
-          <app-adsone class="no-big"></app-adsone>
       </md-card-content>
 
       <md-card-actions class="container-fluid">
@@ -65,13 +64,7 @@
      </div>
      <div class="col-md-3">
         <app-adslist></app-adslist>
-      <div *ngFor="let promo of promowebpages;  let i=index">
-      <template *ngIf="i<2  && promo.pid !== webpageBlg.pid">
-        <app-promocardlist
-          [promo]="promo"
-        ></app-promocardlist>
-      </template>
-      </div>
+     
      </div>
   </div>
    </div>

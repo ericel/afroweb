@@ -13,7 +13,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { EdituserComponent } from './profile/edituser/edituser.component';
 import { Routes, RouterModule } from '@angular/router';
 import { UsersComponent } from './users/users.component';
-import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+import {Ng2PaginationModule} from 'ng2-pagination';
 const routes: Routes = [
 { path: 'authentication', component: SignupComponent,
     data: {
@@ -62,7 +62,7 @@ const routes: Routes = [
     SharedModule,
     MomentModule,
     MasonryModule,
-    InfiniteScrollModule 
+    Ng2PaginationModule
   ],
   declarations: [
     SignupComponent,

@@ -41,10 +41,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   lastDialogResult: string; 
   statusesOk: boolean = false;
   loadStatuses = [];
-  sum = 2;
-  throttle = 500;
-  scrollDistance = 10;
-cars = new Array("name", "Volvo", "BMW", "opkl", "ddd","ee", "aaa");
+ 
   constructor(
     private store: Store,
     private statusService: StatusService,
@@ -57,7 +54,7 @@ cars = new Array("name", "Volvo", "BMW", "opkl", "ddd","ee", "aaa");
   
   ngOnInit() {
 
-   //this.addItems(0, this.sum);
+  
    /*this.statusService.getStatus()
     .subscribe(statuses => this.statuses = statuses);
    
@@ -65,29 +62,20 @@ cars = new Array("name", "Volvo", "BMW", "opkl", "ddd","ee", "aaa");
     .subscribe((statuses: any) =>  this.statuses = statuses);
     */
    
-   this.statusService.getStatus()
+   this.statusService.getStatus().first()
     .subscribe(statuses => { this.statuses = statuses; 
       if(this.statuses){
         this.statusesOk = true; 
+        this.statuses =  statuses.filter(function(a){
+            return a.contenttag !== "Audio";
+        });
       } 
  });
- 
-   this._PageService.getBlogs()
-    .subscribe(pages => { this.promopages = pages; 
-        this.promopages.sort(function(a, b) {
-            return b.createdAt - a.createdAt;
-        });
-    
-      if(this.promopages){
-        this.statusesOk = true; 
-      } 
-   
-    });
-    
+
   }
  
   ngAfterViewInit() {
-    //this.addItems(0, this.sum);
+
   }
 
  toggleShow() {
@@ -98,31 +86,6 @@ cars = new Array("name", "Volvo", "BMW", "opkl", "ddd","ee", "aaa");
   onStatusChecked(status) {
     this.statusService.rateStatus(status);
   }
- 
-
- /* addItems(startIndex, endIndex) {
-    if(this.statusesOk)
-    {
-      for (let i = 0; i < this.sum; ++i) {
-      this.loadStatuses.push([i, ' ', this.generateArray()].join(''));
-      console.log(this.loadStatuses);
-    }
-  }
-
-  }
-
-  generateArray () {
-    return  new Array(this.statuses);
-    
-  }
-  onScrollDown () {
-    // add another 20 items
-    const start = this.sum;
-    this.sum += 5;
-    this.addItems(start, this.sum);
-  }*/
-
- 
 
   createRange(len=32) {
     let arr = [];
@@ -131,6 +94,50 @@ cars = new Array("name", "Volvo", "BMW", "opkl", "ddd","ee", "aaa");
     }
     return arr;
   }
+  
+   stories(){
+    this.statusService.getStatus().first()
+    .subscribe(statuses => {  
+       this.statuses =  statuses.filter(function(a){
+            return a.contenttag !== "Audio" && a.contenttag !== "Status Update" && a.contenttag !== "Question";
+      });
+    });
+   }
 
+   music(){
+     this.statusService.getStatus().first()
+    .subscribe(statuses => {  
+       this.statuses =  statuses.filter(function(a){
+            return a.contenttag === "Audio";
+        });
+    }); 
+   }
+
+   questions(){
+     this.statusService.getStatus().first()
+    .subscribe(statuses => {  
+       this.statuses =  statuses.filter(function(a){
+            return a.contenttag === "Question";
+        });
+    }); 
+   }
+
+   jobs(){
+     this.statusService.getStatus().first()
+    .subscribe(statuses => {  
+       this.statuses =  statuses.filter(function(a){
+            return a.contenttag === "Job";
+        });
+    }); 
+   }
+
+    places(){
+     this.statusService.getStatus().first()
+    .subscribe(statuses => {  
+       this.statuses =  statuses.filter(function(a){
+            return a.contenttag === "Place";
+        });
+    }); 
+   }
 }
 

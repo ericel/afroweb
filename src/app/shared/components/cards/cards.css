@@ -1,4 +1,16 @@
 /*Home Statuses */
+.pull-rightm {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+}
+@media screen and (max-width: 768px){
+.nsm-01btn {
+	top: 6px !important;
+    position: relative;
+	margin-left: 5px;
+}
+}
 .mat-button{
 	padding:0 5px !important;
 }
@@ -31,7 +43,7 @@
   }
   md-card {
     overflow: hidden !important;
-	border-top: 2px solid #006064 !important;
+	border-top: 2px solid #0097A7 !important;
   }
   md-card.status {
     padding: 20px 0 0px 0!important;
@@ -183,7 +195,7 @@ md-card-header {
     width: 100% !important;
     height: 50px;
     overflow: hidden;
-    background-color: #0097a7;
+    background: rgb(17, 228, 255) !important;
     border-radius: 4px;
 }
 .block

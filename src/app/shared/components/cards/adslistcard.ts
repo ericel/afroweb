@@ -12,15 +12,14 @@ import { Component, OnInit } from '@angular/core';
  </md-card>
  <div class="mar-10"></div>
 <md-card class="text-center shadow-2 md-adds" >
-   <md-card-subtitle>Share Your File And Earn Money!</md-card-subtitle>
-   <md-card-title>Start making easy money from your comfort zone</md-card-title>   
+   <md-card-subtitle>Free Accounts Now!</md-card-subtitle>
+   <md-card-title>Join and  share with weytindey</md-card-title>   
    <md-card-content>
         <i class="fa fa-cloud-upload fa-5x" aria-hidden="true"></i>
        <h3><a routerLink="/gettingstarted">Get Started for free</a></h3>
    </md-card-content>
    <md-card-actions>
-        <button md-button>Get Started</button>
-        <button md-button>SHARE</button>
+        <button md-button routerLink="/authentication">Sign Up Now</button>
    </md-card-actions>
 </md-card>
 <div class="mar-10"></div>

@@ -73,7 +73,9 @@ export class PromoCardList implements OnInit {
      </div>
      <div class="col-md-9">
        <small> <i class="fa fa-clock-o" aria-hidden="true"></i> {{pagelike.createdAt | amTimeAgo:true}} ago!</small>
-       <h1><a routerLink="/content/_blog/{{pagelike.blogCat | slugify}}/{{ pagelike.pid }}/{{pagelike.blogTitle | slugify}}">{{pagelike.blogTitle}}</a></h1>
+       <h1><a *ngIf="pagelike.contenttag" routerLink="/webcontent/{{pagelike.blogCat | slugify}}/{{ pagelike.pid }}/{{pagelike.blogTitle | slugify}}">{{pagelike.blogTitle}}</a>
+       <a *ngIf="!pagelike.contenttag" routerLink="/content/_blog/{{pagelike.blogCat | slugify}}/{{ pagelike.pid }}/{{pagelike.blogTitle | slugify}}">{{pagelike.blogTitle}}</a>
+       </h1>
        <p>{{pagelike.blogDesc}}</p>
      </div>
      <div class="clearfix"></div>

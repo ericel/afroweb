@@ -19,7 +19,7 @@ searchHasResults: boolean = false;
      this.route.params.subscribe(params => {
          this.search_term = params['string'];
   
-         this._statusService.getStatus()
+         this._statusService.getStatus().first()
           .subscribe(searches => { this.searches = searches; 
             if(this.searches){
               this.statusesOk = true; 
@@ -47,7 +47,7 @@ searchHasResults: boolean = false;
       var thisObject = [];
       for (var keys in this.searches) {
         var getThisObject = this.searches[keys];
-        if (((getThisObject.status).toLowerCase()).indexOf(name) !== -1 ) {
+        if (((getThisObject.status).toLowerCase()).indexOf(name.toLowerCase()) !== -1 ) {
           thisObject.push(this.searches[keys]);
         }
       }
@@ -57,5 +57,96 @@ searchHasResults: boolean = false;
    ngAfterViewInit() {
    
       
+   }
+
+  stories(){
+      this._statusService.getStatus().first()
+          .subscribe(searches => { this.searches = searches; 
+            if(this.searches){
+              this.statusesOk = true; 
+
+              const searchedObj = this.findByName(this.search_term);
+              if(searchedObj.length > 0){
+                this.searchHasResults = true;
+                this.searchedObj = searchedObj;
+                 this.searchedObj =  searchedObj.filter(function(a){
+                      return a.contenttag !== "Audio" && a.contenttag !== "Status Update" && a.contenttag !== "Question";
+                });
+              }
+         } 
+      });
+   }
+
+   music(){
+       this._statusService.getStatus().first()
+          .subscribe(searches => { this.searches = searches; 
+            if(this.searches){
+              this.statusesOk = true; 
+
+              const searchedObj = this.findByName(this.search_term);
+              if(searchedObj.length > 0){
+                this.searchHasResults = true;
+                this.searchedObj = searchedObj;
+                 this.searchedObj =  searchedObj.filter(function(a){
+                       return a.contenttag === "Audio";
+                });
+              }
+         } 
+      });
+
+   }
+
+   questions(){
+       this._statusService.getStatus().first()
+          .subscribe(searches => { this.searches = searches; 
+            if(this.searches){
+              this.statusesOk = true; 
+
+              const searchedObj = this.findByName(this.search_term);
+              if(searchedObj.length > 0){
+                this.searchHasResults = true;
+                this.searchedObj = searchedObj;
+                 this.searchedObj =  searchedObj.filter(function(a){
+                       return a.contenttag === "Question";
+                });
+              }
+         } 
+      });
+   }
+
+   jobs(){
+       this._statusService.getStatus().first()
+          .subscribe(searches => { this.searches = searches; 
+            if(this.searches){
+              this.statusesOk = true; 
+
+              const searchedObj = this.findByName(this.search_term);
+              if(searchedObj.length > 0){
+                this.searchHasResults = true;
+                this.searchedObj = searchedObj;
+                 this.searchedObj =  searchedObj.filter(function(a){
+                        return a.contenttag === "Job";
+                });
+              }
+         } 
+      });
+   }
+
+    places(){
+       this._statusService.getStatus().first()
+          .subscribe(searches => { this.searches = searches; 
+            if(this.searches){
+              this.statusesOk = true; 
+
+              const searchedObj = this.findByName(this.search_term);
+              if(searchedObj.length > 0){
+                this.searchHasResults = true;
+                this.searchedObj = searchedObj;
+                 this.searchedObj =  searchedObj.filter(function(a){
+                        return a.contenttag === "Place";
+                });
+              }
+         } 
+      }); 
    }
 }

@@ -13,6 +13,7 @@ import { MetaService } from 'ng2-meta/src';
 export class MusicfileComponent implements OnInit {
 playing: boolean = false;
 sources:Array<Object>;
+sourcesLike:Array<Object>;
 id; auth; page; pageOk: boolean = false;
   constructor(
     private _mediaService: MediaService,
@@ -33,7 +34,7 @@ id; auth; page; pageOk: boolean = false;
             this.pageOk = true;  
      } 
      });
-     this._mediaService.getAudio(this.id).subscribe(sources => {
+     this._mediaService.getAudio(this.id).first().subscribe(sources => {
        //this.metaService.setTag('og:image',this.product.imageURL);
         this._metaService.setTitle(sources.filename.replace(/<(?:.|\n)*?>/gm, ''));
         this._authService.userById(sources.uid).subscribe(auth => {this.auth = auth; 
@@ -54,8 +55,18 @@ id; auth; page; pageOk: boolean = false;
         });
      });
    });
+
+   this.moreofArtist();
   }
 
+moreofArtist(){
+  this._mediaService.getAudios().first().subscribe(sources => { this.sourcesLike = sources;
+
+       /* this.sourcesLike.sort(function(a, b) {
+            return b[0].createdAt - a[0].createdAt;
+        });*/
+});
+}
  showLove(status) {
     this._statusService.rateStatus(status);
 }

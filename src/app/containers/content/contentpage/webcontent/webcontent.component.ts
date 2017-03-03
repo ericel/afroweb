@@ -62,10 +62,10 @@ sub: any;srcUrl;
      
       // this._statusService.getComments(this.wid).subscribe(comments => this.comments = comments); 
 
-    this._pageService.getBlogs()
+    this._pageService.getwebBlogs()
     .subscribe(webpages => {  
         this.promowebpages = webpages.filter(function(a){
-            return a.status !== "draft";
+            return a.status == "Published";
         });
         this.promowebpages.sort(function(a, b) {
             return b.createdAt - a.createdAt;
@@ -74,7 +74,6 @@ sub: any;srcUrl;
         this.webpageslike = this.promowebpages.filter(function(a){
             return a.blogCat === pageBlg.blogCat && a.pid !== pageBlg.pid;
         });
-    
     });
   
   });

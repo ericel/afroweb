@@ -4,11 +4,13 @@ import { MusicComponent } from './music/music.component';
 import {  UploadComponent } from './upload/upload.component'
 import { Routes, RouterModule } from '@angular/router';
 import { MasonryModule } from 'angular2-masonry';
+import {NgPipesModule} from 'ngx-pipes';
 import { SharedModule } from './../../shared/shared.module';
 import { MaterialModule, MdSnackBarConfig } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './../../shared/services/auth/auth.service';
 import { MusicfileComponent } from './music/musicfile/musicfile.component';
+import {Ng2PaginationModule} from 'ng2-pagination';
 const routes: Routes = [
 { path: 'music', component: MusicComponent,
     data: {
@@ -42,6 +44,8 @@ const routes: Routes = [
     MasonryModule,
     MaterialModule.forRoot(),
     FormsModule, ReactiveFormsModule,
+    NgPipesModule,
+    Ng2PaginationModule
   ],
   declarations: [
     MusicComponent,

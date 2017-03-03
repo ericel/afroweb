@@ -208,3 +208,16 @@ em {
     }
 
 
+.quote  {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+blockquote{
+    color: #00BCD4;
+    font-style: italic;
+    font-size: small;
+}
+.sorter  {
+    color: #cacaca !important;
+}

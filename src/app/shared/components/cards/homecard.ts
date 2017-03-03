@@ -59,7 +59,7 @@ import { Subscription } from 'rxjs';
              </vg-player>  
         <h1>{{status.status}}</h1>
        
-          <button md-button color="primary" (click)="showLove()"><i class="fa fa fa-heart fa-2x" aria-hidden="true"></i></button> {{status.rating}}
+         
   
        </md-card-content>
         <md-card-actions>
@@ -71,7 +71,8 @@ import { Subscription } from 'rxjs';
                    </button>           
           </div> 
         <div  class="pull-right">
-        <button md-button routerLink="/music/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-external-link fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">music</span></button>
+         <button md-button color="primary" (click)="showLove()"><i class="fa fa fa-heart fa-2x" aria-hidden="true"></i></button> {{status.rating}}
+        <button md-button routerLink="/music/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify}}" class="nsm-01btn"><span class="no-big"><i class="fa fa-external-link fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">music</span></button>
         <button md-button (click)="openDialog()"><i class="fa fa-share-alt-square fa-2x" aria-hidden="true"></i></button>
       
         <button md-button data-toggle="collapse" [attr.data-target]="'#' + status.sid" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-commenting fa-2x" aria-hidden="true"></i></button>
@@ -100,12 +101,12 @@ import { Subscription } from 'rxjs';
         <button md-button (click)="openDialog()"><i class="fa fa-share-alt-square fa-2x" aria-hidden="true"></i></button>
         </div>
         <div  class="pull-right">
-        <button md-button *ngIf="status.contenttag === 'Question'" routerLink="/content/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">Help Answer</span></button>
-        <button md-button *ngIf="status.contenttag === 'Status Update'" routerLink="/content/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">More..</span></button>
+        <button md-button *ngIf="status.contenttag === 'Question'" routerLink="/content/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}" class="nsm-01btn"><span class="no-big nsm-01btn"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">Help Answer</span></button>
+        <button md-button *ngIf="status.contenttag === 'Status Update'" routerLink="/content/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}" class="nsm-01btn"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">More..</span></button>
         
-        <button md-button *ngIf='status.contenttag === "Webcontent"' routerLink="/webcontent/{{status.type | slugify}}/{{ status.sid }}/{{status.statustitle | slugify}}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">More..</span></button>
+        <button md-button *ngIf='status.contenttag === "Webcontent"' routerLink="/webcontent/{{status.type | slugify}}/{{ status.sid }}/{{status.statustitle | slugify}}" class="nsm-01btn"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">More..</span></button>
 
-        <button md-button *ngIf='status.contenttag !== "Status Update" && status.contenttag !== "Question" && status.contenttag !== "Webcontent"' routerLink="/content/_blog/{{status.type | slugify}}/{{ status.sid }}/{{status.statustitle | slugify }}"><span class="no-big"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">More..</span></button>
+        <button md-button *ngIf='status.contenttag !== "Status Update" && status.contenttag !== "Question" && status.contenttag !== "Webcontent"' routerLink="/content/_blog/{{status.type | slugify}}/{{ status.sid }}/{{status.statustitle | slugify }}" class="nsm-01btn"><span class="no-big "><i class="fa fa-eye fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">More..</span></button>
 
          
 

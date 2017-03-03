@@ -53,14 +53,14 @@ body {
   font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
 }
 a {
-  color: #006064;
+  color: #00BCD4;
 }
 input {
   border: none;
  
 }
 .primary-color{
-  color: #485274;
+  color: #0097A7;
 }
 .shadow-1 {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -115,7 +115,7 @@ input {
 
 /* Color picker */
 .color-primary {
-  color: #006064 !important;
+  color: #00BCD4 !important;
 }
 .color-red {
   color: red;
@@ -368,7 +368,7 @@ img.blg-image {
 /* POST CSS */
 .blog-post strong {
         font-weight: bold !important;
-        color: #006064;
+        color: #00BCD4;
 }
 .blog-post p {
    margin: 15px 0 !important;
@@ -532,7 +532,7 @@ img.blg-image {
     padding: 18px !important;
     white-space: initial;
     font-size: 1.5em !important;
-    color: #006064 !important;
+    color: #00BCD4 !important;
   }
 @media screen and (min-width: 600px) {
   .mat-tooltip .mat-content {
@@ -551,4 +551,21 @@ img.blg-image {
 }
 .mat-card-header {
     height: auto !important;
+}
+
+.ng2-pagination .current {
+    background: #00BCD4 !important;
+    cursor: pointer;
+}
+.ng2-pagination{
+    cursor: pointer !important;
+}
+
+.innertube {
+  padding: 0 10px;
+}
+@media screen and (max-width: 768px){
+.text-center-sm {
+  text-align: center !important;
+}
 }

@@ -32,16 +32,31 @@
           <div class="padd-me"><app-authcard></app-authcard></div>
         </div>
       </div>
-      <!--<div class="ms-home"
-        
-         infinite-scroll
-         [infiniteScrollDistance]="scrollDistance"
-         [infiniteScrollThrottle]="throttle"
-         (scrolled)="onScrollDown()">-->
+
       <div class="ms-home">
+        <div class="innertube">
+          <div class="row gutter-0 text-center-sm">
+            <div class="col-md-2">
+            <button  md-button [mdMenuTriggerFor]="menu"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i> <span class="sorter">Sort</span></button>
+            <md-menu #menu="mdMenu" >
+              <button md-menu-item (click)="stories()">Stories</button>
+              <button md-menu-item (click)="music()">Music</button>
+              <button md-menu-item (click)="jobs()">Jobs</button>
+              <button md-menu-item (click)="places()">Places</button>
+              <button md-menu-item (click)="questions()">Questions</button>
+            </md-menu>
+            </div>
+            <div class="col-md-4 quote">
+              <blockquote class="no-sm-no"> The miracle is this: the more we share the more we have. Leonard Nimoy</blockquote>
+            </div>
+            <div class="col-md-6">
+              <pagination-controls class="pull-right"  (pageChange)="p = $event" #api></pagination-controls>
+            </div>
+          </div>
+          </div>
       <masonry [useImagesLoaded]="true">
      
-        <masonry-brick class="col-md-4" *ngFor="let status of statuses">
+        <masonry-brick class="col-md-3" *ngFor="let status of statuses | paginate: { itemsPerPage: 12, currentPage: p }">
         <app-homecard
         [status]="status"
         (checked)="onStatusChecked($event)"
@@ -51,7 +66,7 @@
         </masonry-brick>
        
       </masonry>
-       
+      <div *ngIf="statuses.length < 1" class="alert alert-warning">No Results to show yet</div>
     </div>
   </div>
 </main>

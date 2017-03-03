@@ -1,7 +1,10 @@
 <main class="main">
   <div class="upload">
     <md-card>
-      <form *ngIf="!submitted" class="uploadform" [formGroup]="uploadForm" (ngSubmit)="uploadfile(uploadForm.value)">
+    <div *ngIf="submitted" class="alert alert-success">
+          <a routerLink="/music/audio/{{token | slugify}}/file_name">https://weytindey.com/music/audio/{{token | slugify}}/file_name</a> <span id="countdown"></span>
+     </div>
+      <form  class="uploadform" [formGroup]="uploadForm" (ngSubmit)="uploadfile(uploadForm.value)">
       <div class="container-fluid">
       <div class="row guttar-0">
         <div class="col-md-6">
@@ -75,11 +78,11 @@
         <button md-raised-button color="primary" type="submit" *ngIf="uploaded"  [disabled]="!uploadForm.valid">Click to Upload</button>
         </div>
       </form>
-      <div *ngIf="submitted" class="alert alert-success">
+      <!--<div *ngIf="submitted" class="alert alert-success">
        <h1>Your upload was successful!</h1>
        <p> Your will be redirected in a moment </p>
        <div id="countdown" class="aligned"></div>
-    </div>
+    </div>-->
     </md-card>
   </div>
 </main>
