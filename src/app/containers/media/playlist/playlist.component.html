@@ -1,0 +1,139 @@
+<div class="playlist-0">
+<section class="main-playlist">
+  <div class="container-fluid">
+     <div class="row gutter-20 flex-0">
+        <div class="col-md-3 col-list items ">
+           <ul class="list-group">
+              <li class="list-group-item justify-content-between active">
+                Cras justo odio
+                <span class="badge badge-default badge-pill">14</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Dapibus ac facilisis in
+                <span class="badge badge-default badge-pill">2</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Morbi leo risus
+                <span class="badge badge-default badge-pill">1</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Cras justo odio
+                <span class="badge badge-default badge-pill">14</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Dapibus ac facilisis in
+                <span class="badge badge-default badge-pill">2</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Morbi leo risus
+                <span class="badge badge-default badge-pill">1</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Cras justo odio
+                <span class="badge badge-default badge-pill">14</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Dapibus ac facilisis in
+                <span class="badge badge-default badge-pill">2</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Morbi leo risus
+                <span class="badge badge-default badge-pill">1</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Cras justo odio
+                <span class="badge badge-default badge-pill">14</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Dapibus ac facilisis in
+                <span class="badge badge-default badge-pill">2</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Morbi leo risus
+                <span class="badge badge-default badge-pill">1</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Cras justo odio
+                <span class="badge badge-default badge-pill">14</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Dapibus ac facilisis in
+                <span class="badge badge-default badge-pill">2</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Morbi leo risus
+                <span class="badge badge-default badge-pill">1</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Cras justo odio
+                <span class="badge badge-default badge-pill">14</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Dapibus ac facilisis in
+                <span class="badge badge-default badge-pill">2</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Morbi leo risus
+                <span class="badge badge-default badge-pill">1</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Cras justo odio
+                <span class="badge badge-default badge-pill">14</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Dapibus ac facilisis in
+                <span class="badge badge-default badge-pill">2</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Morbi leo risus
+                <span class="badge badge-default badge-pill">1</span>
+              </li><li class="list-group-item justify-content-between">
+                Cras justo odio
+                <span class="badge badge-default badge-pill">14</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Dapibus ac facilisis in
+                <span class="badge badge-default badge-pill">2</span>
+              </li>
+              <li class="list-group-item justify-content-between">
+                Morbi leo risus
+                <span class="badge badge-default badge-pill">1</span>
+              </li>
+            </ul>
+        </div>
+        <div class="col-md-6 col-player play-0 ">
+            <vg-player (onPlayerReady)="onPlayerReady($event)"  >
+                    <vg-controls>
+                        <vg-play-pause></vg-play-pause>
+                        <vg-playback-button></vg-playback-button>
+
+                        <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+
+                        <vg-scrub-bar>
+                            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                            <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                        </vg-scrub-bar>
+
+                        <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+
+                        <vg-mute></vg-mute>
+
+                    </vg-controls>
+
+                    <audio vgMedia id="myAudio" preload="auto">
+                        <source *ngFor="let audio of sources" [src]="audio.src" [type]="audio.type">
+                    </audio>
+             </vg-player>
+             <app-adsone ></app-adsone>
+        </div>
+         <div class="col-md-3 col-list ads-0">
+           <app-adscreate class="no-sm-no"></app-adscreate>
+          <app-adsone ></app-adsone>
+          <app-adsmovies class="no-sm-no"></app-adsmovies>
+          <app-adslist class="no-sm-no"></app-adslist>
+         </div>
+     </div>
+  </div>
+</section>
+<div class="clearfix"></div>
+</div>

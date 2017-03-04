@@ -48,9 +48,11 @@ export class ShareCard implements OnInit {
    close() {
       this._dialog.closeAll();
   }
+
 }
 
 @Component({
+
   selector: 'app-socialshare',
   template: `
   <div class="row sharecard" style="text-align:center; margin:15px 0;">
@@ -59,9 +61,8 @@ export class ShareCard implements OnInit {
                 &redirect_uri={{statusUrl}}
                 &link={{statusUrl}}
                 &name={{isTitle}}
-                &picture={{statusPhotoUrl}}
                 &caption=www.weytindey.com | {{status.type}}
-                &author=ojobasi
+                &picture={{statusPhotoUrl}}
                 &description={{statusDesc}}.
                 &properties={text:’value1′,key2:’value2′}
                 &actions={name:’I LOVE Africa’,link:’https://www.weytindey.com’}&&
@@ -71,14 +72,14 @@ export class ShareCard implements OnInit {
     </div>
     <div class="col-4" style="text-align:center;">
         <a class="btn btn-social btn-twitter"
-        href="https://twitter.com/share?text={{isTitle}}&url=https://www.weytindey.com/{{statusUrl}}&hashtags=afroweb,weytindey,africanoneweb">
+        href="https://twitter.com/share?text={{isTitle}}&url={{statusUrl}}&hashtags=afroweb,weytindey,africanoneweb">
         <span class="fa fa-twitter-square">
        </span> <span class="no-big">TW</span> <span class="no-sm-no">Share On Twitter</span>
         </a>
     </div>
     <div class="col-4" style="text-align:center;">
         <a class="btn btn-social btn-google"
-        href="https://plus.google.com/share?url=https://www.weytindey.com/{{statusUrl}}&text={{statusDesc}}">
+        href="https://plus.google.com/share?url={{statusUrl}}&text={{statusDesc}}&redirecturi={{statusUrl}}&image=https://weytindey.com/assets/img/_status.png&label=READ">
         <span class="fa fa-google-plus-square">
        </span> <span class="no-big">G+</span> <span class="no-sm-no">Share On Google</span>
         </a>
@@ -130,7 +131,6 @@ export class SocialCard implements OnInit {
       this.isTitle = this.title.replace(/<(?:.|\n)*?>/gm, '');
       this.statusDesc = encodeURIComponent(this.status.status.trim().replace(/<(?:.|\n)*?>/gm, ''));
      }
- 
 
   
      

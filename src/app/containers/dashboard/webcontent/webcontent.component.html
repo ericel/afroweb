@@ -4,7 +4,7 @@
    <div *ngIf="pad_top" class="padding-50"></div>
    <md-card>
      <div *ngIf="submitted" class="alert alert-success">
-          <a routerLink="/webcontent/_blog/{{blogCat | slugify}}/{{ token }}/{{blogTitle | slugify | shorten: 50}}">https://weytindey.com/webcontent/_blog/{{blogCat | slugify}}/{{ token }}/{{blogTitle | slugify | shorten: 50}}</a> <span id="countdown"></span>
+          <a routerLink="/webcontent/{{blogCat | slugify}}/{{ token }}/{{blogTitle | slugify | shorten: 50}}">https://weytindey.com/webcontent/{{blogCat | slugify}}/{{ token }}/{{blogTitle | slugify | shorten: 50}}</a> <span id="countdown"></span>
      </div>
     <form  class="blogform" [formGroup]="blogForm" (ngSubmit)="submitForm(blogForm.value)">
     

@@ -11,6 +11,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './../../shared/services/auth/auth.service';
 import { MusicfileComponent } from './music/musicfile/musicfile.component';
 import {Ng2PaginationModule} from 'ng2-pagination';
+import { PlaylistComponent } from './playlist/playlist.component';
+import {VgCoreModule} from 'videogular2/core';
+import {VgControlsModule} from 'videogular2/controls';
+import {VgOverlayPlayModule} from 'videogular2/overlay-play';
+import {VgBufferingModule} from 'videogular2/buffering';
 const routes: Routes = [
 { path: 'music', component: MusicComponent,
     data: {
@@ -35,6 +40,11 @@ const routes: Routes = [
    path: 'music/audio/:mid/:string',
    component:  MusicfileComponent
   }
+  ,
+  {
+   path: 'music/playlist/:mid/:string',
+   component:  PlaylistComponent
+  }
 ];
 @NgModule({
   imports: [
@@ -45,12 +55,17 @@ const routes: Routes = [
     MaterialModule.forRoot(),
     FormsModule, ReactiveFormsModule,
     NgPipesModule,
-    Ng2PaginationModule
+    Ng2PaginationModule,
+     VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule
   ],
   declarations: [
     MusicComponent,
     UploadComponent,
-    MusicfileComponent
+    MusicfileComponent,
+    PlaylistComponent
   ]
 })
 export class MediaModule { }

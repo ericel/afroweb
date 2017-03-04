@@ -62,7 +62,7 @@ focusChange(){
  }
 
   reset() {
-    this.searchThis = " ";
+    this.searchForm.reset();
   }
 
   logout(){

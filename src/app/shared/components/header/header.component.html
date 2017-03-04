@@ -18,10 +18,10 @@
     <div class="flexsearch">
 		<div class="flexsearch--wrapper">
 			<form class="flexsearch--form" [formGroup]="searchForm" (ngSubmit)="search(searchForm.value)">
-				<button mdTooltip="search" class="flexsearch--submit-left" [style.color]="focusChange()" md-button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+				<button mdTooltip="search" class="flexsearch--submit-left"  md-button type="submit"><i class="fa fa-search fa-2x" aria-hidden="true"></i></button>
 				<div class="flexsearch--input-wrapper"  [ngClass]="{'has-error':!searchForm.controls['search_term'].valid && searchForm.controls['search_term'].touched}">
 					<input [(ngModel)]="search_term" name="search_term" (click)="showStyle = !showStyle" 
-					class="flexsearch--input" type="search" placeholder="search"
+					class="flexsearch--input" type="search" 
 					[formControl]="searchForm.controls['search_term']" >
 					<div class="search-error">
 					 <div *ngIf="searchForm.controls['search_term'].hasError('required') && searchForm.controls['search_term'].touched" class="alert alert-danger" mdTooltip="Type Search term please...">Type Search term please...</div>
@@ -92,7 +92,7 @@
 					</div>
 				</div>
 				<div class="text-center mar-15">
-				  	<button class="search-btn" mdTooltip="search" [style.color]="focusChange()" md-raised-button color="primary" type="submit"><i class="fa fa-search fa-2x" aria-hidden="true"></i></button>
+				  	<button class="search-btn" mdTooltip="search" [disabled]="!searchForm.valid"  md-raised-button color="primary" type="submit"><i class="fa fa-search fa-2x" aria-hidden="true"></i></button>
 				</div>
 				<span class="flexsearch--close" [style.color]="focusChange()" (click)="reset()"><i class="fa fa-times" aria-hidden="true"></i></span>
 			</form>

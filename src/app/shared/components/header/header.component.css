@@ -140,7 +140,7 @@ md-toolbar {
 	font-size: 18px;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-   background:   #ECEFF1;
+   background: #077f8c;
    font-family: Monospace, Helvetica, sans-serif !important;
 }
 	
@@ -172,7 +172,7 @@ md-toolbar {
   padding: 0;
   border: none;
 	background: rgb(4, 132, 146) !important;
-  color: #fcfcfc;
+  color: #eee;
   font-family: 'Helvetica', sans-serif;
   font-size: 20px;
   border-bottom-right-radius: 0px !important;
@@ -183,11 +183,9 @@ md-toolbar {
 }
 .flexsearch--input:focus {
   outline: none;
-    background:   #fff;
-    color: #666;
-    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 #0097a7 inset;
-    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 #0097a7 inset;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 #0097a7 inset;
+    background:   rgb(4, 132, 146);
+    color: #fff;
+  
     text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 
