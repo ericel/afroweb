@@ -56,7 +56,7 @@ import 'rxjs/add/operator/first';
       height: 40px !important;
     }
     .comments md-card-subtitle {
-      color: rgba(0, 0, 0, 0.91) !important;
+      color: rgba(0, 0, 0, 0.91);
     }
     .comments .color-down {
           color: #713f3f;

@@ -2,6 +2,7 @@
     position: relative;
     top: 72px;
     padding:0 10px;
+    overflow:hidden;
 }
 .playlist-0{
     background: #000;
@@ -11,9 +12,7 @@
     min-height: 768px;
     color: #eee;
 }
-html, body {
-    background: #222;
-}
+
 .col-player {
   background: #2c2c2c;
   -moz-box-shadow:    6px 6px 6px 6px #2d2d2d inset;
@@ -29,12 +28,7 @@ html, body {
     top: -10px;
     
 }
-@media screen and (min-width: 768px){
-  .col-list, .col-player{
-      min-height: 768px;
-    padding-top: 10px;
-  }  
-}
+
 .list-group-item {
     border: 0px !important;
     background: #2c2c2c !important;
@@ -52,6 +46,25 @@ html, body {
     background: rgb(17, 228, 255) !important;
     border-radius: 4px;
 }
+img.creator-avatar {
+ width: 40px;
+ height: 40px;
+ border-radius: 100%;
+}
+.list-title {
+    float: left;
+    font-size: 1.8em;
+}
+
+@media screen and (min-width: 768px){
+  .col-list, .col-player{
+    min-height: 768px;
+    padding-top: 10px;
+  } 
+  img.creator-avatar {
+      float: left;
+  } 
+}
 @media screen and (max-width: 768px){
 .flex-0 { display:flex; flex-direction: column; text-align:center;}
 .play-0 { order: 1 }
@@ -63,3 +76,11 @@ html, body {
      z-index: 9999;
  }
 }
+.innertube {
+    padding: 0 15px;
+}
+.list-group-item{
+    cursor:pointer;
+}
+
+

@@ -569,3 +569,13 @@ img.blg-image {
   text-align: center !important;
 }
 }
+
+.main-playlist .mat-card-subtitle{
+    color: #fff !important;
+}
+.col-player .mat-card {
+    background: none !important;
+}
+.mat-card-header-text {
+  height: auto !important;
+}
