@@ -71,10 +71,11 @@ export const firebaseConfig = {
     messagingSenderId: "586504231618"
 };
 
-let options: any = {
-    animate: 'flyRight',
-    positionClass: 'toast-bottom-right',
-};
+ export class CustomOption extends ToastOptions {
+      animate = 'flyRight'; // you can override any options available
+      newestOnTop = false;
+      showCloseButton = true;
+ }
 
 @NgModule({
   declarations: [
@@ -100,7 +101,7 @@ let options: any = {
     }),
     MaterialModule.forRoot(),
     MetaModule.forRoot(metaConfig),
-    ToastModule.forRoot(options),
+    ToastModule.forRoot(),
     HomeModule,
     CommonsModule,
     ContentModule,
@@ -114,7 +115,8 @@ let options: any = {
   providers: [
     ...SERVICE_PROVIDER,
     AnimationService,
-    Store
+    Store,
+    {provide: ToastOptions, useClass: CustomOption}
     ],
     entryComponents: [
     ...ENTRY_COMPONENTS

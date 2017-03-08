@@ -1,4 +1,4 @@
-import { Component,  OnInit, Input, Output, EventEmitter  } from '@angular/core';
+import { Component,  OnInit, Input, Output, EventEmitter, OnDestroy  } from '@angular/core';
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from '../../../../shared/services/auth/auth.service';
 import { PageService } from '../../../../shared/services/page/page.service';
@@ -10,7 +10,7 @@ import {DomSanitizer} from "@angular/platform-browser";
   templateUrl: './webcontent.component.html',
   styleUrls: ['./webcontent.component.css']
 })
-export class WebcontentComponent implements OnInit{
+export class WebcontentComponent implements OnInit, OnDestroy{
 wid: string;
 webpage: any;promowebpages = [];
 auth: any;
@@ -83,7 +83,19 @@ sub: any;srcUrl;
     .subscribe(value => { 
     if(value){this.isAuthorized = true; this.user = value; } 
      else {this.isAuthorized = false} });
+}
+
+showLove(status) {
+    this._statusService.rateStatus(status);
   }
+  
+savePost(){
+  console.log(this.wid);
+  
+}
 
 
+ngOnDestroy(){
+  this.sub.unsubscribe();
+}
 }

@@ -23,8 +23,7 @@
          </button></span>
          <md-menu #menu="mdMenu">
           <button *ngIf="isAuthorized && webpageBlg.uid === user.uid" md-menu-item routerLink="/_blog/editblog/{{webpageBlg.pid}}/{{webpageBlg.blogTitle | slugify}}">Edit</button>
-          <button md-menu-item>Save Post</button>
-          <button md-menu-item>Delete</button>
+          <!--<button md-menu-item (click)="savePost()">Save Post</button>-->
         </md-menu>
         
       </md-card-header>
@@ -56,13 +55,14 @@
         </app-commentscard> 
       </div>
   </md-card>
-     <md-card>
+    
+     </div>
+     <div class="col-md-3">
+        <md-card>
        <div *ngFor="let webpagelike of webpageslike;  let i=index">
          <app-promoListLike [pagelike]="webpagelike"></app-promoListLike>
        </div>
      </md-card>
-     </div>
-     <div class="col-md-3">
         <app-adslist></app-adslist>
      
      </div>

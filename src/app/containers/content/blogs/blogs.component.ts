@@ -1,34 +1,80 @@
 import { Component, OnInit } from '@angular/core';
-import { PageService } from '../../../shared/services/page/page.service';
+import { StatusService } from '../../../shared/services/status/status.service';
 @Component({
   selector: 'app-blogs',
   templateUrl: './blogs.component.html',
   styleUrls: ['./blogs.component.css']
 })
 export class BlogsComponent implements OnInit {
-promopages=[];
-promopagesOk: boolean = false;
+news=[];
+newspagesOk: boolean = false;
   constructor(
-    private _pageService: PageService
+    private _statusService: StatusService
   ) { }
 
   ngOnInit() {
-    this._pageService.getBlogs()
-    .subscribe(pages => { this.promopages = pages; 
+    this._statusService.getStatus()
+    .subscribe(pages => { this.news = pages; 
       if(pages){
-        this.promopagesOk = true;
+        this.newspagesOk = true;
       }
-        this.promopages.sort(function(a, b) {
+        this.news.sort(function(a, b) {
             return b.createdAt - a.createdAt;
         });
-        this.promopages = this.promopages.filter(function(a) {
-            return a.status === "Published";
+        this.news = this.news.filter(function(a) {
+            return a.contenttag !== "Question" && a.contenttag !== "Status Update" && a.contenttag !== "Audio";
         });
     
     });
   }
+ onStatusChecked(status) {
+    this._statusService.rateStatus(status);
+  }
+   stories(){
+    this._statusService.getStatus().first()
+    .subscribe(statuses => {  
+       this.news =  statuses.filter(function(a){
+            return a.contenttag !== "Audio" && a.contenttag !== "Status Update" && a.contenttag !== "Question";
+      });
+    });
+   }
 
-createRange(len=30) {
+   education(){
+     this._statusService.getStatus().first()
+    .subscribe(statuses => {  
+       this.news =  statuses.filter(function(a){
+            return a.type === "Education";
+        });
+    }); 
+   }
+
+   videos(){
+     this._statusService.getStatus().first()
+    .subscribe(statuses => {  
+       this.news =  statuses.filter(function(a){
+            return a.type === "Video";
+        });
+    }); 
+   }
+
+  politics(){
+     this._statusService.getStatus().first()
+    .subscribe(statuses => {  
+       this.news =  statuses.filter(function(a){
+            return a.type === "Politics";
+        });
+    }); 
+   }
+
+   sport(){
+     this._statusService.getStatus().first()
+    .subscribe(statuses => {  
+       this.news =  statuses.filter(function(a){
+            return a.type === "Sports";
+        });
+    }); 
+   }
+createRange(len=32) {
     let arr = [];
     for(let i = 0; i < len ; i++) {
       arr.push(i);

@@ -21,7 +21,7 @@
   <div class="container-fluid" >
 
     
-      <div class="row gutter-0">
+      <div class="row gutter-10">
         <div class="col-md-4">
           <app-updatecard ></app-updatecard>
         </div>
@@ -56,16 +56,18 @@
           </div>
       <masonry [useImagesLoaded]="true">
      
-        <masonry-brick class="col-md-3" *ngFor="let status of statuses | paginate: { itemsPerPage: 12, currentPage: p }">
+        <masonry-brick class="col-md-3 " *ngFor="let status of statuses | paginate: { itemsPerPage: 12, currentPage: p }">
         <app-homecard
         [status]="status"
         (checked)="onStatusChecked($event)"
         >
        </app-homecard>
        <div class="mar-15"></div>
+      
         </masonry-brick>
-       
+        
       </masonry>
+
       <div *ngIf="statuses.length < 1" class="alert alert-warning">No Results to show yet</div>
     </div>
   </div>

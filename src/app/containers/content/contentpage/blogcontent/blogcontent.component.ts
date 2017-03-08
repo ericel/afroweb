@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from '../../../../shared/services/auth/auth.service';
 import { PageService } from '../../../../shared/services/page/page.service';
@@ -9,7 +9,7 @@ import { MetaService } from 'ng2-meta/src';
   templateUrl: './blogcontent.component.html',
   styleUrls: ['./blogcontent.component.css']
 })
-export class BlogcontentComponent implements OnInit {
+export class BlogcontentComponent implements OnInit, OnDestroy {
 cid: string;
 page: any;promopages = [];
 auth: any;
@@ -88,5 +88,7 @@ sub: any;
     this._statusService.rateStatus(status);
   }
 
- 
+ ngOnDestroy(){
+   this.sub.unsubscribe();
+ }
 }

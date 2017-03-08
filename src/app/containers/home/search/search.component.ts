@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { StatusService } from '../../../shared/services/status/status.service';
 @Component({
@@ -6,17 +6,18 @@ import { StatusService } from '../../../shared/services/status/status.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit, AfterViewInit {
+export class SearchComponent implements OnInit, OnDestroy, AfterViewInit {
 search_term;searches;searchedObj;
 statusesOk: boolean = false;
 searchHasResults: boolean = false;
+sub;
   constructor(
     private route: ActivatedRoute,
     private _statusService: StatusService,
   ) { }
 
   ngOnInit() {
-     this.route.params.subscribe(params => {
+     this.sub = this.route.params.subscribe(params => {
          this.search_term = params['string'];
   
          this._statusService.getStatus().first()
@@ -148,5 +149,9 @@ searchHasResults: boolean = false;
               }
          } 
       }); 
+   }
+
+   ngOnDestroy(){
+     this.sub.unsubscribe();
    }
 }

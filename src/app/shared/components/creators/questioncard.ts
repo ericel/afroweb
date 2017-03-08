@@ -35,7 +35,12 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
       name="question"
       placeholder="Ask your Question"
       ></textarea>
-    
+      <tag-input [(ngModel)]='newQuestion.tags'
+       name="tags" 
+      id="tags"
+      [maxItems]="4"
+      separatorKeys="[32]"
+      ></tag-input>
       <small class="tags-01 pull-left">type a tag and hit shift or enter key</small>
      
       <button md-raised-button color="primary" type="submit" class="pull-right">post question</button>

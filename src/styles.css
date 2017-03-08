@@ -579,3 +579,20 @@ img.blg-image {
 .mat-card-header-text {
   height: auto !important;
 }
+.mat-button .mat-button-wrapper>* {
+  color: #00BCD4 !important;
+}
+
+.quote  {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+blockquote{
+    color: #00BCD4;
+    font-style: italic;
+    font-size: medium;
+}
+.sorter  {
+    color: #cacaca !important;
+}

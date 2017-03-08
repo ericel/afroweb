@@ -22,7 +22,7 @@ import { AuthService } from '../../services/auth/auth.service';
          <md-card-header>
             <img md-card-avatar src="./assets/img/user-avatar.png">
             <md-card-title><a routerLink="/authentication">Sign Up Or Log in</a></md-card-title>
-            <md-card-subtitle><em>Idonsuffer is Awesome!</em></md-card-subtitle>
+            <md-card-subtitle><em>Weytindey is Awesome!</em></md-card-subtitle>
          </md-card-header>
    </md-card>
    
@@ -31,6 +31,15 @@ import { AuthService } from '../../services/auth/auth.service';
 md-card {
       border-bottom: 2px solid #006064 !important;
 }
+ .mat-card {
+      margin: 0px 0 10px 0;
+      clear:both;
+      border-radius: 0 !important;
+      box-shadow: 0 1px 1px -2px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px 0 rgba(0,0,0,.12) !important;
+      padding: 20px 10px 10px 10px !important ;
+      border-bottom: 2px solid #0097A7 !important;
+
+  }
   .card-links i{
     margin-right: 5px;
   }

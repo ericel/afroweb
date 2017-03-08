@@ -21,12 +21,12 @@ import { BlogcontentComponent } from './contentpage/blogcontent/blogcontent.comp
 import { PageComponent } from './add/page/page.component';
 import { JobComponent } from './add/job/job.component';
 import { PlaceComponent } from './add/place/place.component';
-
+import {Ng2PaginationModule} from 'ng2-pagination';
 const routes: Routes = [
 { path: 'add', component: AddComponent,
     data: {
        meta: {
-        title: 'Add Content',
+        title: 'Create Content',
         description: 'One place web from mama Africa. Afro music, videos, blogs, news. All in one place.',
         'og:image': 'https://enoeasy-94b34.firebaseapp.com/assets/img/logo_big.png'
        }
@@ -71,7 +71,7 @@ const routes: Routes = [
  { path: 'stories', component: BlogsComponent,
     data: {
        meta: {
-        title: 'Add Content',
+        title: 'Africa News Today',
         description: 'Africa News Today',
         'og:image': 'https://enoeasy-94b34.firebaseapp.com/assets/img/logo_big.png'
        }
@@ -118,7 +118,8 @@ const routes: Routes = [
     SharedModule,
     MomentModule,
     MasonryModule,
-    LinkyModule
+    LinkyModule,
+    Ng2PaginationModule
   ],
   declarations: [
     AddComponent,

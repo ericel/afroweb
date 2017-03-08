@@ -21,7 +21,7 @@ import { Subscription } from 'rxjs';
          </button></span>
          <md-menu #menu="mdMenu">
           <button md-menu-item (click)="hide(false)">Hide</button>
-          <button md-menu-item (click)="save()">Save Post</button>
+         
           <button *ngIf="isAuthorized && user.uid === status.uid" md-menu-item (click)="delete(status.sid)">Delete</button>
         </md-menu>
           <md-card-subtitle class="type-0">
@@ -71,7 +71,7 @@ import { Subscription } from 'rxjs';
                    </button>           
           </div> 
         <div  class="pull-right">
-         <button md-button color="primary" (click)="showLove()"><i class="fa fa fa-heart fa-2x" aria-hidden="true"></i></button> {{status.rating}}
+         <button md-button color="primary" (click)="showLove()"><i class="fa fa fa-heart fa-2x" aria-hidden="true"></i></button> {{status.rating + 1}}
         <button md-button routerLink="/music/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify}}" class="nsm-01btn"><span class="no-big"><i class="fa fa-external-link fa-2x" aria-hidden="true"></i></span><span class="no-sm-no">music</span></button>
         <button md-button (click)="openDialog()"><i class="fa fa-share-alt-square fa-2x" aria-hidden="true"></i></button>
       
@@ -97,7 +97,7 @@ import { Subscription } from 'rxjs';
        <md-card-actions class="container-fluid">
         <div class="divider"></div>  
        <div class="pull-left">
-        <button md-button color="primary" (click)="showLove()"><i class="fa fa fa-heart fa-2x" aria-hidden="true"></i></button> {{status.rating}} 
+        <button md-button color="primary" (click)="showLove()"><i class="fa fa fa-heart fa-2x" aria-hidden="true"></i></button> {{status.rating + 1}} 
         <button md-button (click)="openDialog()"><i class="fa fa-share-alt-square fa-2x" aria-hidden="true"></i></button>
         </div>
         <div  class="pull-right">
@@ -138,6 +138,7 @@ import { Subscription } from 'rxjs';
  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeCard implements OnInit {
+   /*<button md-menu-item (click)="save()">Save Post</button>*/
 @Input() status: any;
 @Output() checked = new EventEmitter();
 @Output() limit = 1;

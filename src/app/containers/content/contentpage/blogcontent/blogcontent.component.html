@@ -23,8 +23,8 @@
          </button></span>
          <md-menu #menu="mdMenu">
           <button *ngIf="isAuthorized && pageBlg.uid === user.uid" md-menu-item routerLink="/_blog/editblog/{{pageBlg.pid}}/{{pageBlg.blogTitle | slugify}}">Edit</button>
-          <button md-menu-item>Save Post</button>
-          <button md-menu-item>Delete</button>
+          <!--<button md-menu-item>Save Post</button>
+          <button md-menu-item>Delete</button>-->
         </md-menu>
         
       </md-card-header>

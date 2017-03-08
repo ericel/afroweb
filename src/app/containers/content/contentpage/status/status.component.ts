@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from '../../../../shared/services/auth/auth.service';
 import { PageService } from '../../../../shared/services/page/page.service';
@@ -9,7 +9,7 @@ import { MetaService } from 'ng2-meta/src';
   templateUrl: './status.component.html',
   styleUrls: ['./status.component.css']
 })
-export class StatusComponent implements OnInit {
+export class StatusComponent implements OnInit, OnDestroy {
 
 pid: string;
 page: any;promopages = [];
@@ -17,7 +17,7 @@ auth: any;
 pageOk: boolean = false;
 authOk: boolean = false;
 isAuthorized: boolean = false;
-user;
+user; sub;
 comments: any;
 pageBlg: any;
 isBlog: boolean = false;
@@ -31,7 +31,7 @@ isBlog: boolean = false;
     ) { }
 
   ngOnInit() {
-     this.route.params.subscribe(params => {
+    this.sub = this.route.params.subscribe(params => {
        if(params['pid']){
         this.pid = params['pid'];
       } 
@@ -83,5 +83,9 @@ isBlog: boolean = false;
   }
 showLove(status) {
     this._statusService.rateStatus(status);
+  }
+
+  ngOnDestroy(){
+    this.sub.unsubscribe();
   }
 }
