@@ -12,6 +12,7 @@ import { LinkyModule } from 'angular2-linky';
 import { SharedModule } from './../../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WebcontentaddComponent } from './webcontent/webcontent.component';
+import {Ng2PaginationModule} from 'ng2-pagination';
 const routes: Routes = [
 { path: 'dashboard', component: DashboardComponent,
  canActivate: [AuthService],
@@ -47,7 +48,8 @@ const routes: Routes = [
     SharedModule,
     MomentModule,
     MasonryModule,
-    LinkyModule
+    LinkyModule,
+    Ng2PaginationModule
   ],
   declarations: [
     DashboardComponent,

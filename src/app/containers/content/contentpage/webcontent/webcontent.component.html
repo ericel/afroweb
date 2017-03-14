@@ -55,14 +55,15 @@
         </app-commentscard> 
       </div>
   </md-card>
-    
-     </div>
-     <div class="col-md-3">
-        <md-card>
+     <md-card>
        <div *ngFor="let webpagelike of webpageslike;  let i=index">
+         <template [ngIf]="i<5">
          <app-promoListLike [pagelike]="webpagelike"></app-promoListLike>
+         </template>
        </div>
      </md-card>
+     </div>
+     <div class="col-md-3">
         <app-adslist></app-adslist>
      
      </div>
